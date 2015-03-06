@@ -4,14 +4,12 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 
-public class Wall extends Entity {
+public class Wall extends Rectangle {
 	private double w, h;
 	
 
 	public Wall(double x, double y, double w , double h) {
-		super(x, y);
-		this.w = w;
-		this.h = h;
+		super(x, y,w,h);
 	}
 
 	

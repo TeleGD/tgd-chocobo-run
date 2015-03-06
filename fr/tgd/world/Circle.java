@@ -1,6 +1,8 @@
 package fr.tgd.world;
 
-public class Circle extends Entity{
+import org.newdawn.slick.Graphics;
+
+public abstract class Circle extends Entity{
 	
 	int radius;
 	
@@ -18,7 +20,8 @@ public class Circle extends Entity{
 		this.radius = radius;
 	}
 	
-	
+	public abstract void update(int delta);
+	public abstract void render(Graphics g);
 	
 
 }

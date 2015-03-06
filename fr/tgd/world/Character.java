@@ -4,12 +4,11 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
 public class Character extends Circle  {
-	protected int stamina=100;
+	protected int stamina;
 	protected float speedX;
 	protected int movement;
 	protected boolean isMoving;
-	protected double nextX;
-	public Character(double x, double y, int stamina, float speedX, double radius ) {
+	public Character(double x, double y, int stamina, float speedX, int radius ) {
 		super(x, y,radius);
 		this.stamina = stamina;
 		this.speedX = speedX;
@@ -31,38 +30,26 @@ public class Character extends Circle  {
 		if(isMoving){
 			switch(movement) {
 			case 0 :
-				nextX=x+speedX*delta;
-				if(!) {
-					x=nextX;
-				}
-				while(){
-					nextX--;
-				}
-				x=nextX;
+				x-=speedX*delta;
+				//if (Collisions.collisionCircleAnyRect(this) && this.x>=200){x+=speedX*delta;}
 				break;
-			
-			case 1 :
-				nextX=x+speedX*delta;
-				if(!){
-					x=nextX;
-				}
-				while(){
-					nextX++;
-				}
-				
-			}
+			case 1 : 
+				x+=speedX*delta;
+				//if(Collisions.collisionCircleAnyRect(this) && this.x<=600){x-=speedX*delta;}
+				break;
 		}
-		}	
-		
-	
-	
-	@Override
-	public void update() {
-		
+		}
 	}
-	@Override
+	
+		
+	
+	
+	public void update(int delta) {
+	movement(delta);	
+	}
+
 	public void render(Graphics g) {
-		g.circle(radius);
+		g.drawOval((float) x, (float) y, 10, 10);
 	}
 	
 	

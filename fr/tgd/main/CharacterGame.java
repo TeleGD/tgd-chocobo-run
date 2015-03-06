@@ -1,4 +1,4 @@
-
+package fr.tgd.main;
 import java.util.Random;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
@@ -7,10 +7,10 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
-public class Game extends BasicGame{	//Classe principale WindowGame
+public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 	
     public static void main(String[] args) throws SlickException {
-        new AppGameContainer(new Game(), largeurW, hauteurW, false).start(); 
+        new AppGameContainer(new CharacterGame(), largeurW, hauteurW, false).start(); 
     }
 	
 	GameContainer container;
@@ -29,7 +29,7 @@ public class Game extends BasicGame{	//Classe principale WindowGame
 	//CREATEUR
 	//======================================================================================
 	
-    public Game() {
+    public CharacterGame() {
         super("Nuit Coding");
     }
     

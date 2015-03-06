@@ -1,5 +1,7 @@
 package fr.tgd.world;
 
+import org.newdawn.slick.Graphics;
+
 public abstract class Entity {
 	private double x, y;
 	
@@ -26,6 +28,6 @@ public abstract class Entity {
 	}
 
 	public abstract void update();
-	public abstract void render();
+	public abstract void render(Graphics g);
 	
 }

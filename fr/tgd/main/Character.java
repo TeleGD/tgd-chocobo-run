@@ -1,6 +1,6 @@
 package fr.tgd.main;
 
-import org.newdawn.slick.Input;
+import org.newdawn.slick.Graphics;
 
 import fr.tgd.world.Entity;
 
@@ -33,15 +33,12 @@ public class Character extends Entity {
 		this.speed = speed;
 	}
 	
-	public void movements(int delta){
-		
-	}
 	@Override
 	public void update() {
 		
 	}
 	@Override
-	public void render() {
+	public void render(Graphics g) {
 		
 	}
 	

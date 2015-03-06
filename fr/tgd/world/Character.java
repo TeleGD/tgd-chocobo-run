@@ -1,9 +1,7 @@
-package fr.tgd.main;
+package fr.tgd.world;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
-
-import fr.tgd.world.Entity;
 
 public class Character extends Circle  {
 	protected int stamina=100;

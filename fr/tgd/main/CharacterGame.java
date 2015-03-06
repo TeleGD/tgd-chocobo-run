@@ -1,5 +1,8 @@
 package fr.tgd.main;
 import java.util.Random;
+
+import fr.tgd.world.Character;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -8,6 +11,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 public class CharacterGame extends BasicGame{	//Classe principale WindowGame
+
 	
     public static void main(String[] args) throws SlickException {
         new AppGameContainer(new CharacterGame(), largeurW, hauteurW, false).start(); 
@@ -20,7 +24,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 	//======================================================================================
 	
 	static public int hauteurW=600,largeurW=800; 
-
+	static public Character character;
 	//======================================================================================
 	//DECLARATION DES VARIABLES
 	//======================================================================================
@@ -40,6 +44,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     public void init(GameContainer container) throws SlickException {
         this.container = container;
         container.setShowFPS(false);
+        character = new Character(100d,100d,100,0.3f,20);
     }
     
     //======================================================================================
@@ -47,7 +52,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-
+    	character.render(g);
     }
 
     //======================================================================================

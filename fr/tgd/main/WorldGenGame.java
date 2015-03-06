@@ -2,15 +2,22 @@ package fr.tgd.main;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import fr.tgd.world.WallGenerator;
+import fr.tgd.world.World;
+
 public class WorldGenGame extends BasicGame{
 	public static void main(String[] args) throws SlickException {
         new AppGameContainer(new WorldGenGame(), largeurW, hauteurW, false).start(); 
     }
+	
+	World world = new World();
+	WallGenerator gen = new WallGenerator(world) ;
 	
 	GameContainer container;
 	
@@ -46,14 +53,19 @@ public class WorldGenGame extends BasicGame{
     //======================================================================================
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-
+    	g.setColor(Color.white);
+    	g.fillRect(0, 0, container.getWidth(), container.getHeight());
+    	world.render(g);
     }
 
     //======================================================================================
     //FONCTION UPDATE
     //======================================================================================
 
+    int time = 0;
     public void update(GameContainer container, int delta) throws SlickException {
+    	world.update();
+    	gen.update();
     	
     }
     //======================================================================================

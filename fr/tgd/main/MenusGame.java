@@ -1,18 +1,22 @@
 package fr.tgd.main;
 
+import java.awt.Font;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 
 import fr.tgd.menus.MainMenu;
 import fr.tgd.menus.Scene;
+import fr.tgd.util.FontManager;
 
-public class AdrienGame extends BasicGame{	//Classe principale WindowGame
+public class MenusGame extends BasicGame{	//Classe principale WindowGame
 
-    private static AdrienGame instance = new AdrienGame();
+    private static MenusGame instance = new MenusGame();
     
     public static void main(String[] args) throws SlickException {
         new AppGameContainer(instance, largeurW, hauteurW, false).start(); 
@@ -36,7 +40,7 @@ public class AdrienGame extends BasicGame{	//Classe principale WindowGame
 	//CREATEUR
 	//======================================================================================
 	
-    public AdrienGame() {
+    public MenusGame() {
         super("Nuit Coding");
         currentScene = new MainMenu();
     }
@@ -58,6 +62,11 @@ public class AdrienGame extends BasicGame{	//Classe principale WindowGame
     public void init(GameContainer container) throws SlickException {
         this.container = container;
         container.setShowFPS(false);
+        
+    	Font menuTitreFont = new Font("Arial", Font.BOLD, 40);
+    	FontManager.menuTitreTTF = new TrueTypeFont(menuTitreFont, false);
+    	Font menuItemsFont = new Font("Arial", Font.BOLD, 30);
+    	FontManager.menuItemsTTF = new TrueTypeFont(menuItemsFont, false);
     }
     
     //======================================================================================

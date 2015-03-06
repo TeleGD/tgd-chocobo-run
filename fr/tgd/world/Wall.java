@@ -1,32 +1,28 @@
 package fr.tgd.world;
 
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 
-public class Wall {
-	private double inf,supp;
+
+public class Wall extends Entity {
+	private double w, h;
 	
 
-	public Wall(double inf , double supp) {
-		super();
-		this.inf = inf;
-		this.supp = supp;
+	public Wall(double x, double y, double w , double h) {
+		super(x, y);
+		this.w = w;
+		this.h = h;
 	}
 
-	public double getInf() {
-		return inf;
+	@Override
+	public void update() {
+		setY(getY()+1);
 	}
 
-
-	public void setInf(double inf) {
-		this.inf = inf;
-	}
-
-
-	public double getSupp() {
-		return supp;
-	}
-
-	public void setSupp(double supp) {
-		this.supp = supp;
+	@Override
+	public void render(Graphics g) {
+		g.setColor(Color.black);
+		g.fillRect((int)getX(), (int)getY(), (int)w, (int)h);
 	}
 	
 	

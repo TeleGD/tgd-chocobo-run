@@ -2,6 +2,7 @@ package fr.tgd.util;
 
 import fr.tgd.world.Circle;
 import fr.tgd.world.Rectangle;
+import fr.tgd.world.World;
 
 public class Collisions {
 	public static double distanceCircleRect(Circle circle, Rectangle rectangle){
@@ -49,6 +50,15 @@ public class Collisions {
 	
 	public static boolean collisionCircleRect(Circle circle, Rectangle rectangle){
 		return (distanceCircleRect(circle,rectangle)<=0);
+	}
+	
+	public static boolean collisionCircleAnyRect(Circle circle){
+		for(int i=0;i<World.getWalls().size();i++){
+			if(collisionCircleRect(circle,World.getWalls().get(i))){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static boolean collisionCircleCircle(Circle circle1, Circle circle2){

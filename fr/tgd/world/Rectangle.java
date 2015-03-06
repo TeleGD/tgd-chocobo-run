@@ -4,15 +4,15 @@ import org.newdawn.slick.Graphics;
 
 public abstract class Rectangle extends Entity{
 
-	int width,hight;
+	double width,hight;
 	
-	public Rectangle(double x,double y,int width,int hight){
+	public Rectangle(double x,double y,double width,double hight){
 		super(x,y);
 		this.width=width;
 		this.hight=hight;
 	}
 	
-	public int getWidth() {
+	public double getWidth() {
 		return width;
 	}
 
@@ -20,7 +20,7 @@ public abstract class Rectangle extends Entity{
 		this.width = width;
 	}
 
-	public int getHight() {
+	public double getHight() {
 		return hight;
 	}
 

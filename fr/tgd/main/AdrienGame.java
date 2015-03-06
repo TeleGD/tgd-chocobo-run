@@ -1,7 +1,4 @@
 package fr.tgd.main;
-import java.util.Random;
-
-import fr.tgd.world.Character;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
@@ -10,11 +7,16 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
-public class CharacterGame extends BasicGame{	//Classe principale WindowGame
+import fr.tgd.menus.MainMenu;
+import fr.tgd.menus.Scene;
 
-	
+public class AdrienGame extends BasicGame{	//Classe principale WindowGame
+
+    private static AdrienGame instance = new AdrienGame();
+    
     public static void main(String[] args) throws SlickException {
-        new AppGameContainer(new CharacterGame(), largeurW, hauteurW, false).start(); 
+        new AppGameContainer(instance, largeurW, hauteurW, false).start(); 
+        
     }
 	
 	GameContainer container;
@@ -24,7 +26,8 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 	//======================================================================================
 	
 	static public int hauteurW=600,largeurW=800; 
-	static public Character character;
+	private Scene currentScene;
+
 	//======================================================================================
 	//DECLARATION DES VARIABLES
 	//======================================================================================
@@ -33,8 +36,19 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 	//CREATEUR
 	//======================================================================================
 	
-    public CharacterGame() {
+    public AdrienGame() {
         super("Nuit Coding");
+        currentScene = new MainMenu();
+    }
+    
+    public static void setScene(Scene scene)
+    {
+    	instance.currentScene = scene;
+    }
+    
+    public static Scene getScene()
+    {
+    	return instance.currentScene;
     }
     
     //======================================================================================
@@ -44,7 +58,6 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     public void init(GameContainer container) throws SlickException {
         this.container = container;
         container.setShowFPS(false);
-        character = new Character(100d,100d,100,0.3f,20);
     }
     
     //======================================================================================
@@ -52,7 +65,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-    	character.render(g);
+    	currentScene.draw(g);
     }
 
     //======================================================================================
@@ -60,8 +73,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void update(GameContainer container, int delta) throws SlickException {
-    	
-    	
+    	currentScene.update();
     }
     //======================================================================================
     //ENTREES CLAVIER

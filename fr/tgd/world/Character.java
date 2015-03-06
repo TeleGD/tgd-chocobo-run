@@ -7,6 +7,20 @@ public class Character extends Circle  {
 	protected int stamina;
 	protected float speedX;
 	protected int movement;
+	
+	public int getMovement() {
+		return movement;
+	}
+	public void setMovement(int movement) {
+		this.movement = movement;
+	}
+	public boolean isMoving() {
+		return isMoving;
+	}
+	public void setMoving(boolean isMoving) {
+		this.isMoving = isMoving;
+	}
+
 	protected boolean isMoving;
 	public Character(double x, double y, int stamina, float speedX, int radius ) {
 		super(x, y,radius);

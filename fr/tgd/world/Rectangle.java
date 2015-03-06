@@ -1,6 +1,8 @@
 package fr.tgd.world;
 
-public class Rectangle extends Entity{
+import org.newdawn.slick.Graphics;
+
+public abstract class Rectangle extends Entity{
 
 	int width,hight;
 	
@@ -26,5 +28,7 @@ public class Rectangle extends Entity{
 		this.hight = hight;
 	}
 	
+	public abstract void update(int delta);
+	public abstract void render(Graphics g);
 }
 

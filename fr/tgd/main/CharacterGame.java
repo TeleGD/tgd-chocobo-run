@@ -60,7 +60,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void update(GameContainer container, int delta) throws SlickException {
-    	
+    	character.update(delta);
     	
     }
     //======================================================================================
@@ -71,19 +71,25 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
         if (Input.KEY_ESCAPE == key) {
             container.exit();
         }
-        if (Input.KEY_UP == key || Input.KEY_DOWN == key) {
-
-        }
-        if (Input.KEY_Z == key || Input.KEY_S == key) {
-
-        }
+        switch (key) {
+        case Input.KEY_LEFT: character.setMoving(false);
+        					 break;
+        case Input.KEY_RIGHT: character.setMoving(false);
+        					  break;
+        case Input.KEY_Z:break;
+        case Input.KEY_S:break;
+    }
     }
     
 
     public void keyPressed(int key, char c) {
         switch (key) {
-            case Input.KEY_UP:;break;
-            case Input.KEY_DOWN:break;
+            case Input.KEY_LEFT: character.setMoving(true);
+            					 character.setMovement(0);
+            					 break;
+            case Input.KEY_RIGHT: character.setMoving(true);
+			 					  character.setMovement(1);
+            					  break;
             case Input.KEY_Z:break;
             case Input.KEY_S:break;
         }

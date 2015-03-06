@@ -14,12 +14,11 @@ public class Wall extends Entity {
 		this.h = h;
 	}
 
-	@Override
-	public void update() {
+	
+	public void update(int delta) {
 		setY(getY()+1);
 	}
 
-	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect((int)getX(), (int)getY(), (int)w, (int)h);

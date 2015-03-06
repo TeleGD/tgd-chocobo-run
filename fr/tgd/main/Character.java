@@ -1,18 +1,20 @@
 package fr.tgd.main;
 
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 
 import fr.tgd.world.Entity;
 
-public class Character extends Entity {
+public class Character extends Circle  {
 	protected int stamina=100;
-	protected float speed=0.3f;
-	protected double radius;
-	public Character(double x, double y, int stamina, float speed, double radius ) {
-		super(x, y);
+	protected float speedX;
+	protected int movement;
+	protected boolean isMoving;
+	protected double nextX;
+	public Character(double x, double y, int stamina, float speedX, double radius ) {
+		super(x, y,radius);
 		this.stamina = stamina;
-		this.speed = speed;
-		this.radius= radius;
+		this.speedX = speedX;
 	}
 	public int getStamina() {
 		return stamina;
@@ -20,18 +22,41 @@ public class Character extends Entity {
 	public void setStamina(int stamina) {
 		this.stamina = stamina;
 	}
-	public float getSpeed() {
-		return speed;
+	public float getSpeedX() {
+		return speedX;
 	}
-	public double getRadius() {
-		return radius;
+	public void setSpeedX(float speed) {
+		this.speedX = speed;
 	}
-	public void setRadius(double radius) {
-		this.radius = radius;
-	}
-	public void setSpeed(float speed) {
-		this.speed = speed;
-	}
+	
+	public void movement(int delta) {
+		if(isMoving){
+			switch(movement) {
+			case 0 :
+				nextX=x+speedX*delta;
+				if(!) {
+					x=nextX;
+				}
+				while(){
+					nextX--;
+				}
+				x=nextX;
+				break;
+			
+			case 1 :
+				nextX=x+speedX*delta;
+				if(!){
+					x=nextX;
+				}
+				while(){
+					nextX++;
+				}
+				
+			}
+		}
+		}	
+		
+	
 	
 	@Override
 	public void update() {
@@ -39,7 +64,7 @@ public class Character extends Entity {
 	}
 	@Override
 	public void render(Graphics g) {
-		
+		g.circle(radius);
 	}
 	
 	

@@ -3,7 +3,7 @@ package fr.tgd.world;
 import org.newdawn.slick.Graphics;
 
 public abstract class Entity {
-	private double x, y;
+	protected double x, y;
 	
 	public Entity(double x, double y) {
 		super();

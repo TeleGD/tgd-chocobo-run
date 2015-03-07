@@ -32,6 +32,7 @@ public class WallGenerator {
 					xRight = wallPos.get(2*i);
 				Wall wall = new Wall(xLeft, 0, xRight-xLeft, 20);
 				world.addWall(wall);
+				Character.wallSpeed+=0.02 ;
 			}
 			
 			time=0;

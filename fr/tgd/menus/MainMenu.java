@@ -82,17 +82,15 @@ public class MainMenu extends BasicGameState{
 		}
 	}
 	
-	 
 	public void execOption() {
 		switch (selection) {
 		case 0:
 			game.enterState(WorldGenGame.ID);
 			break;
+			
 		case 1:
 			container.exit();break;
-		case 2:
-			game.enterState(GOMenu.ID);
-			break;
+		case 2:break;
 			
 		}
 	}

@@ -107,10 +107,6 @@ public class Character extends Circle  {
 		return c;
 	}
 	
-	public int getScore() {
-		return this.c;
-	}
-	
 	public boolean isDead(){
 		return dead;
 	}

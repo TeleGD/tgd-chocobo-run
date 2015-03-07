@@ -1,7 +1,6 @@
 package fr.tgd.main;
-import java.util.Random;
 
-import fr.tgd.world.Character;
+import java.awt.Font;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
@@ -9,12 +8,19 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 
-public class CharacterGame extends BasicGame{	//Classe principale WindowGame
+import fr.tgd.menus.MainMenu;
+import fr.tgd.menus.Scene;
+import fr.tgd.util.FontManager;
 
-	
+public class MenusGame extends BasicGame{	//Classe principale WindowGame
+
+    private static MenusGame instance = new MenusGame();
+    
     public static void main(String[] args) throws SlickException {
-        new AppGameContainer(new CharacterGame(), largeurW, hauteurW, false).start(); 
+        new AppGameContainer(instance, largeurW, hauteurW, false).start(); 
+        
     }
 	
 	GameContainer container;
@@ -24,7 +30,8 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 	//======================================================================================
 	
 	static public int hauteurW=600,largeurW=800; 
-	static public Character character;
+	private Scene currentScene;
+
 	//======================================================================================
 	//DECLARATION DES VARIABLES
 	//======================================================================================
@@ -33,8 +40,19 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 	//CREATEUR
 	//======================================================================================
 	
-    public CharacterGame() {
+    public MenusGame() {
         super("Nuit Coding");
+        currentScene = new MainMenu();
+    }
+    
+    public static void setScene(Scene scene)
+    {
+    	instance.currentScene = scene;
+    }
+    
+    public static Scene getScene()
+    {
+    	return instance.currentScene;
     }
     
     //======================================================================================
@@ -44,7 +62,11 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     public void init(GameContainer container) throws SlickException {
         this.container = container;
         container.setShowFPS(false);
-        character = new Character(400d,500d,100,0.3f,20);
+        
+    	Font menuTitreFont = new Font("Arial", Font.BOLD, 40);
+    	FontManager.menuTitreTTF = new TrueTypeFont(menuTitreFont, false);
+    	Font menuItemsFont = new Font("Arial", Font.BOLD, 30);
+    	FontManager.menuItemsTTF = new TrueTypeFont(menuItemsFont, false);
     }
     
     //======================================================================================
@@ -52,7 +74,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-    	character.render(g);
+    	currentScene.draw(g);
     }
 
     //======================================================================================
@@ -60,8 +82,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void update(GameContainer container, int delta) throws SlickException {
-    	character.update(delta);
-    	
+    	currentScene.update();
     }
     //======================================================================================
     //ENTREES CLAVIER
@@ -71,25 +92,19 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
         if (Input.KEY_ESCAPE == key) {
             container.exit();
         }
-        switch (key) {
-        case Input.KEY_LEFT: character.setMoving(false);
-        					 break;
-        case Input.KEY_RIGHT: character.setMoving(false);
-        					  break;
-        case Input.KEY_Z:break;
-        case Input.KEY_S:break;
-    }
+        if (Input.KEY_UP == key || Input.KEY_DOWN == key) {
+
+        }
+        if (Input.KEY_Z == key || Input.KEY_S == key) {
+
+        }
     }
     
 
     public void keyPressed(int key, char c) {
         switch (key) {
-            case Input.KEY_LEFT: character.setMoving(true);
-            					 character.setMovement(0);
-            					 break;
-            case Input.KEY_RIGHT: character.setMoving(true);
-			 					  character.setMovement(1);
-            					  break;
+            case Input.KEY_UP:;break;
+            case Input.KEY_DOWN:break;
             case Input.KEY_Z:break;
             case Input.KEY_S:break;
         }

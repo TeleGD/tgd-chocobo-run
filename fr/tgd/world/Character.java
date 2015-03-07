@@ -3,10 +3,41 @@ package fr.tgd.world;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
+import fr.tgd.util.Collisions;
+
 public class Character extends Circle  {
 	protected int stamina;
 	protected float speedX;
 	protected int movement;
+	protected boolean isDash;
+	protected int speedDash;
+	public static double wallSpeed = 1;
+	
+	public int getSpeedDash() {
+		return speedDash;
+	}
+	public void setSpeedDash(int speedDash) {
+		this.speedDash = speedDash;
+	}
+	public boolean isDash() {
+		return isDash;
+	}
+	public void setDash(boolean isDash) {
+		this.isDash = isDash;
+	}
+	public int getMovement() {
+		return movement;
+	}
+	public void setMovement(int movement) {
+		this.movement = movement;
+	}
+	public boolean isMoving() {
+		return isMoving;
+	}
+	public void setMoving(boolean isMoving) {
+		this.isMoving = isMoving;
+	}
+
 	protected boolean isMoving;
 	public Character(double x, double y, int stamina, float speedX, int radius ) {
 		super(x, y,radius);
@@ -31,16 +62,38 @@ public class Character extends Circle  {
 			switch(movement) {
 			case 0 :
 				x-=speedX*delta;
-				//if (Collisions.collisionCircleAnyRect(this) && this.x>=200){x+=speedX*delta;}
+				 if (Collisions.collisionCircleAnyRect(this) || this.x<=200){
+					 x+=speedX*delta;
+					 }
 				break;
 			case 1 : 
 				x+=speedX*delta;
-				//if(Collisions.collisionCircleAnyRect(this) && this.x<=600){x-=speedX*delta;}
+				 if(Collisions.collisionCircleAnyRect(this) || this.x>=600){
+					 x-=speedX*delta;}
 				break;
 		}
 		}
 	}
 	
+	public void dash(int delta) {
+		if(isDash){
+				switch(movement) {
+				case 0 :
+					x-=speedDash*delta;
+					
+					 if (Collisions.collisionCircleAnyRect(this) || this.x<=200){
+						 x+=speedDash*delta;
+						 }
+					 break;
+				case 1 :
+					x+=speedDash*delta;
+					 if(Collisions.collisionCircleAnyRect(this) || this.x>=600){
+						 x-=speedDash*delta;}
+					 break;
+					 }
+				}
+		
+	}
 		
 	
 	

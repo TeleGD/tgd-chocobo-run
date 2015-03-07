@@ -6,7 +6,10 @@ import org.newdawn.slick.Graphics;
 
 public class World
 {
-	ArrayList<Wall> walls = new ArrayList<Wall>();
+	static ArrayList<Wall> walls = new ArrayList<Wall>();
+	
+	private Character character = new Character(0, 0, 0, 0, 0);
+	private double w = 500;
 	
 	public void addWall(Wall wall)
 	{
@@ -16,6 +19,11 @@ public class World
 	public void removeWall(Wall wall)
 	{
 		walls.remove(wall);
+	}
+	
+	public double getW()
+	{
+		return w;
 	}
 	
 	public void render(Graphics g)
@@ -32,5 +40,9 @@ public class World
 		{
 			wall.update(delta);
 		}
+	}
+	
+	public static ArrayList<Wall> getWalls(){
+		return walls;
 	}
 }

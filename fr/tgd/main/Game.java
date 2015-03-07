@@ -1,5 +1,5 @@
 package fr.tgd.main;
-
+import java.util.Random;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -7,16 +7,10 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
-import fr.tgd.menus.MainMenu;
-import fr.tgd.menus.Scene;
-
-public class AdrienGame extends BasicGame{	//Classe principale WindowGame
-
-    private static AdrienGame instance = new AdrienGame();
-    
+public class Game extends BasicGame{	//Classe principale WindowGame
+	
     public static void main(String[] args) throws SlickException {
-        new AppGameContainer(instance, largeurW, hauteurW, false).start(); 
-        
+        new AppGameContainer(new Game(), largeurW, hauteurW, false).start(); 
     }
 	
 	GameContainer container;
@@ -26,7 +20,6 @@ public class AdrienGame extends BasicGame{	//Classe principale WindowGame
 	//======================================================================================
 	
 	static public int hauteurW=600,largeurW=800; 
-	private Scene currentScene;
 
 	//======================================================================================
 	//DECLARATION DES VARIABLES
@@ -36,19 +29,8 @@ public class AdrienGame extends BasicGame{	//Classe principale WindowGame
 	//CREATEUR
 	//======================================================================================
 	
-    public AdrienGame() {
+    public Game() {
         super("Nuit Coding");
-        currentScene = new MainMenu();
-    }
-    
-    public static void setScene(Scene scene)
-    {
-    	instance.currentScene = scene;
-    }
-    
-    public static Scene getScene()
-    {
-    	return instance.currentScene;
     }
     
     //======================================================================================
@@ -65,7 +47,7 @@ public class AdrienGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-    	currentScene.draw(g);
+
     }
 
     //======================================================================================
@@ -73,7 +55,8 @@ public class AdrienGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void update(GameContainer container, int delta) throws SlickException {
-    	currentScene.update();
+    	
+    	
     }
     //======================================================================================
     //ENTREES CLAVIER

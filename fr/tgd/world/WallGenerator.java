@@ -19,13 +19,14 @@ public class WallGenerator {
 	}
 	
 	public void update() {
-		time++ ; 
-		if(time > nextInterval/2) {
+		time++ ;
+		Character.wallSpeed += 0.05;
+		if(time > nextInterval/Character.wallSpeed) {
 			ArrayList<Double> wallPos = calcWallPos();
 			
 			for(int i=0; i<(wallPos.size())/2+1; i++)
 			{
-				double xLeft = 0, xRight = 500;
+				double xLeft = 0, xRight = world.getW();
 				if(i!=0)
 					xLeft = wallPos.get(2*i-1);
 				if(i != (wallPos.size())/2)
@@ -40,12 +41,11 @@ public class WallGenerator {
 	}
 
 	private ArrayList<Double> calcWallPos() {
-		System.out.println("GEN !");
 		ArrayList<Double> pos = new ArrayList<Double>();
 		ArrayList<WallDim> dims = new ArrayList<WallDim>();
 		for(int i=0; i<3; i++)
 		{
-			dims.add(new WallDim((double)rand.nextInt(500), (double)holeSize));
+			dims.add(new WallDim((double)rand.nextInt((int)world.getW()-holeSize*2)+holeSize, (double)holeSize));
 		}
 
 		boolean holeMerged = true;

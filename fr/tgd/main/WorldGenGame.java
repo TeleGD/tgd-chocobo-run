@@ -13,7 +13,7 @@ import fr.tgd.world.World;
 
 public class WorldGenGame extends BasicGame{
 	public static void main(String[] args) throws SlickException {
-        new AppGameContainer(new WorldGenGame(), largeurW, hauteurW, false).start(); 
+			new AppGameContainer(new WorldGenGame(), largeurW, hauteurW, false).start(); 
     }
 	
 	World world = new World();
@@ -55,7 +55,9 @@ public class WorldGenGame extends BasicGame{
     public void render(GameContainer container, Graphics g) throws SlickException {
     	g.setColor(Color.white);
     	g.fillRect(0, 0, container.getWidth(), container.getHeight());
+    	g.translate((int)((container.getWidth()-world.getW())/2), 0);
     	world.render(g);
+    	g.translate(-(int)((container.getWidth()-world.getW())/2), 0);
     }
 
     //======================================================================================

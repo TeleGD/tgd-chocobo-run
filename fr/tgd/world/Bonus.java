@@ -27,10 +27,7 @@ public abstract class Bonus extends Circle {
 
 	}
 	
-	public void render(Graphics g){
-		g.setColor(Color.green);
-		g.fillOval((float) x-radius, (float) y-radius, 10, 10);
-	}
+	public abstract void render(Graphics g);
 	
 	public void used(){
 		timer.start();

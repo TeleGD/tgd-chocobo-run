@@ -16,12 +16,12 @@ import fr.tgd.main.WorldGenGame;
 import fr.tgd.world.Character;
 import fr.tgd.world.World;
 
-public class MainMenu extends BasicGameState{
+public class HelpMenu extends BasicGameState{
 	
-	public static int ID = 2;
+	public static int ID = 6;
 
-	private String nom = "Menu Principal";
-	private String[] items = { "Jouer", "Scores", "Help", "Quitter" };
+	private String nom = "Aide";
+	private String[] items = { "Bonus 1", "Bonus 2", "Bonus 3", "Retour Menu" };
 
 	public int nbrOption = items.length;
 
@@ -31,7 +31,7 @@ public class MainMenu extends BasicGameState{
 
 	static GameContainer container;
 	static StateBasedGame game;
-	int selection = 0;
+	int selection = nbrOption-1;
 
 	 public void init(GameContainer container, StateBasedGame game) throws SlickException {
 	        this.container = container;
@@ -60,20 +60,8 @@ public class MainMenu extends BasicGameState{
 	 @Override
 	public void keyPressed(int key,char c) {
 		switch (key) {
-		case Input.KEY_DOWN:
-			if (selection < nbrOption - 1)
-				selection++;
-			else
-				selection = 0;
-			break;
-		case Input.KEY_UP:
-			if (selection > 0)
-				selection--;
-			else
-				selection = nbrOption - 1;
-			break;
 		case Input.KEY_ENTER:
-			execOption();
+			game.enterState(MainMenu.ID);
 			break;
 		}
 	}
@@ -84,14 +72,11 @@ public class MainMenu extends BasicGameState{
 			game.enterState(WorldGenGame.ID);
 			break;
 		case 1:
+			container.exit();break;
+		case 2:
 			game.enterState(GOMenu.ID);
 			break;
-		case 2:
-			game.enterState(HelpMenu.ID);
-			break;
-		case 3:
-			container.exit();
-			break;
+			
 		}
 	}
 	

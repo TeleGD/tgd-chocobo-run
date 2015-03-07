@@ -9,8 +9,15 @@ public class Character extends Circle  {
 	protected int stamina;
 	protected float speedX;
 	protected int movement;
+	protected boolean isDash;
 
 	
+	public boolean getIsDash() {
+		return isDash;
+	}
+	public void setIsDash(boolean isDash) {
+		this.isDash =isDash;
+	}
 	public int getMovement() {
 		return movement;
 	}
@@ -62,7 +69,11 @@ public class Character extends Circle  {
 	}
 	
 		
-	
+	public void consumeStamina() {
+		if (isDash){
+			stamina-=2;
+		}
+	}
 		
 	public int recoverStamina(){
 		if(stamina<10000){//12s pour devenir full
@@ -80,6 +91,7 @@ public class Character extends Circle  {
 	public void update(int delta) {
 	movement(delta);
 	recoverStamina();
+	consumeStamina();
 	score();
 	System.out.println(stamina);
 	}

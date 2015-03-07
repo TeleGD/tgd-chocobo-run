@@ -31,6 +31,7 @@ public class Game extends StateBasedGame {
 		addState(new GOMenu());
 		addState(new PauseMenu());
 		addState(new WorldGenGame());
+		addState(new HelpMenu());
 
 	}
 }

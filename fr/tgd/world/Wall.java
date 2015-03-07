@@ -15,8 +15,8 @@ public class Wall extends Entity {
 	}
 
 	@Override
-	public void update() {
-		setY(getY()+1);
+	public void update(int delta) {
+		setY(getY()+2);
 	}
 
 	@Override

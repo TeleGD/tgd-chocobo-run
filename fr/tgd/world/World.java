@@ -26,11 +26,11 @@ public class World
 		}
 	}
 	
-	public void update()
+	public void update(int delta)
 	{
 		for(Wall wall : walls)
 		{
-			wall.update();
+			wall.update(delta);
 		}
 	}
 }

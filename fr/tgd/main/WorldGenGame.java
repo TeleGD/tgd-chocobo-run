@@ -148,7 +148,7 @@ public class WorldGenGame extends BasicGameState {
 					character.setMoving(false);
 				break;
 		case Input.KEY_LSHIFT:
-			character.setSpeedX(0.3f);
+			character.setSpeedX(character.getSpeedX()/2);
 			character.setIsDash(false);
 			break;
 
@@ -171,7 +171,7 @@ public class WorldGenGame extends BasicGameState {
 			break;
 		case Input.KEY_LSHIFT:
 			if (character.getStamina() >= 50) {
-				character.setSpeedX(0.9f);
+				character.setSpeedX(character.getSpeedX()*2);
 				character.setIsDash(true);
 			}
 			break;

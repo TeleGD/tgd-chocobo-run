@@ -15,7 +15,7 @@ public class Character extends Circle  {
 	public static double wallSpeed = 0.1;
 	private World world;
 	private boolean dead=false;
-	protected int c;
+	protected double c;
 	
 	public boolean getIsDash() {
 		return isDash;
@@ -99,8 +99,11 @@ public class Character extends Circle  {
 		dead = true;
 	}
 	
-	public int score(){
-		c+=1;
+	public void score(int delta){
+		c+=wallSpeed*delta;
+	}
+	
+	public double getScore(){
 		return c;
 	}
 	
@@ -121,13 +124,13 @@ public class Character extends Circle  {
 	movement(delta);
 	recoverStamina();
 	consumeStamina();
-	score();
+	score(delta);
 	}
 
 	public void render(Graphics g) {
 		g.drawOval((float) x-radius, (float) y-radius, 20, 20);
 		g.fillRect(-150, 25, stamina/100, 25);
-		g.drawString(""+score(),-150,50);
+		g.drawString(""+(int)getScore(),-150,50);
 	}
 	
 	

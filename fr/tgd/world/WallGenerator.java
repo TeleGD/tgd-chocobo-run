@@ -8,11 +8,11 @@ import java.util.Random;
 public class WallGenerator {
 	private World world ;
 	private int nextInterval,time ;
-	private static int minInterval=100;
-	private static int maxInterval=150;
+	private static int minInterval=200;
+	private static int maxInterval=450;
 	public Random rand = new Random();
 
-	private double coef=0.00008;
+	private double coef=0.0003;
 
 	private static int holeSize = 50 ; 
 

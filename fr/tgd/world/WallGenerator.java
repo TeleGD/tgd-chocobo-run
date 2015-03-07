@@ -11,6 +11,7 @@ public class WallGenerator {
 	private static int minInterval=200;
 	private static int maxInterval=450;
 	public Random rand = new Random();
+	public static int nbWall ; 
 
 	private double coef=0.0003;
 
@@ -36,6 +37,7 @@ public class WallGenerator {
 				Wall wall = new Wall(xLeft, 0, xRight-xLeft, 20);
 				world.addWall(wall);
 				Character.wallSpeed+=delta*coef ;
+				nbWall++;
 			}
 			
 			time=0;

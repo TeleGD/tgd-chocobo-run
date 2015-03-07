@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class BonusGenerator {
 	private World world ;
-	private int nextInterval,time ;
+	private int time ;
 	public Random rand = new Random();
 	
 	public BonusGenerator(World world) {

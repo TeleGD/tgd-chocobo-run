@@ -1,5 +1,7 @@
 package fr.tgd.world;
 
+import fr.tgd.main.WorldGenGame;
+
 public class DoubleScoreBonus extends Bonus {
 
 	public DoubleScoreBonus(double x, double y, int radius) {
@@ -7,7 +9,7 @@ public class DoubleScoreBonus extends Bonus {
 	}
 	
 	public void used(){
-		
+		WorldGenGame.character.score(delta,2);
 	}
 
 }

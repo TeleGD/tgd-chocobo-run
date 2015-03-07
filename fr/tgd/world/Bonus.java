@@ -12,7 +12,6 @@ import fr.tgd.util.Timer;
 public abstract class Bonus extends Circle {
 	
 	Timer timer = new Timer();
-
 	public Bonus(double x, double y, int radius) {
 		super(x, y, radius);
 	}

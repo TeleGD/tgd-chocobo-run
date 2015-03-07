@@ -106,8 +106,8 @@ public class Character extends Circle  {
 		dead = true;
 	}
 	
-	public void score(int delta){
-		c+=wallSpeed*delta;
+	public void score(int delta, int mult){
+		c+=wallSpeed*delta*mult;
 	}
 	
 	public double getScore(){
@@ -125,7 +125,7 @@ public class Character extends Circle  {
 	movement(delta);
 	recoverStamina();
 	consumeStamina();
-	score(delta);
+	score(delta,1);
 	}
 
 	public void render(Graphics g) {

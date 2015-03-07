@@ -121,6 +121,8 @@ public class Character extends Circle  {
 		this.dead = dead;
 	}
 	
+	
+	
 	public void update(int delta) {
 	movement(delta);
 	recoverStamina();

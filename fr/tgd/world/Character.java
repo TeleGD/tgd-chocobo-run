@@ -165,6 +165,9 @@ public class Character extends Circle  {
 	}
 	if(timerAccel.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
 		color=Color.black;
+		if(wallSpeed<=0.2f)
+		wallSpeed=0.1f;
+		else
 		wallSpeed-=0.2f;
 		timerAccel.stop();
 	}
@@ -175,7 +178,7 @@ public class Character extends Circle  {
 
 	public void render(Graphics g) {
 		g.setColor(color);
-		g.drawOval((float) x-radius, (float) y-radius, 20, 20);
+		g.fillOval((float) x-radius, (float) y-radius, 20, 20);
 		g.setColor(Color.black);
 		g.fillRect(-150, 25, stamina/100, 25);
 		g.drawString(""+(int)getScore(),-150,50);

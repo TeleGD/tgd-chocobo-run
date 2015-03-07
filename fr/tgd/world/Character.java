@@ -26,6 +26,7 @@ public class Character extends Circle  {
 	private Timer timerDouble=new Timer();
 	private Timer timerAccel=new Timer();
 	
+	
 	public double getWallSpeed() {
 		return wallSpeed;
 	}

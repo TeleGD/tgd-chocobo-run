@@ -34,8 +34,6 @@ public class WorldGenGame extends BasicGameState {
 	private GameContainer container;
 	StateBasedGame game;
 
-	public static int dernierScore;
-
 	public static Integer[] scoreList = new Integer[] { 0, 0, 0, 0, 0 };
 
 	// ======================================================================================
@@ -113,8 +111,9 @@ public class WorldGenGame extends BasicGameState {
 		ben.update(delta, container);
 
 		if (character.isDead()) {
+			
+			int dernierScore = (int) Character.getScore();
 			game.enterState(GOMenu.ID);
-			dernierScore = (int) Character.getScore();
 			addScore(dernierScore);
 			character.setDead(false);
 			world.removeAllWalls();

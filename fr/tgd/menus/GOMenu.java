@@ -1,7 +1,6 @@
 package fr.tgd.menus;
 
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -13,15 +12,13 @@ import org.newdawn.slick.state.StateBasedGame;
 import fr.tgd.main.WorldGenGame;
 import fr.tgd.menus.MainMenu;
 import fr.tgd.world.Character;
-import fr.tgd.world.WallGenerator;
-import fr.tgd.world.World;
 
 
 public class GOMenu extends BasicGameState {
-
+	
 	public static int ID = 3;
 
-	private String nom = "GAME OVER,     score : "+WorldGenGame.dernierScore;
+	private String nom = "GAME OVER";
 	private String[] items = { "Re-jouer", "Quitter" };
 
 	public int nbrOption = items.length;

@@ -12,7 +12,7 @@ public class Wall extends Rectangle {
 	}
 	
 	public void update(int delta) {
-		setY(getY()+Character.wallSpeed);
+		setY(getY()+Character.wallSpeed*delta);
 	}
 
 	public void render(Graphics g) {

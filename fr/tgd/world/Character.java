@@ -9,7 +9,21 @@ public class Character extends Circle  {
 	protected int stamina;
 	protected float speedX;
 	protected int movement;
+	protected boolean isDash;
+	protected int speedDash;
 	
+	public int getSpeedDash() {
+		return speedDash;
+	}
+	public void setSpeedDash(int speedDash) {
+		this.speedDash = speedDash;
+	}
+	public boolean isDash() {
+		return isDash;
+	}
+	public void setDash(boolean isDash) {
+		this.isDash = isDash;
+	}
 	public int getMovement() {
 		return movement;
 	}
@@ -62,8 +76,22 @@ public class Character extends Circle  {
 	
 	public void dash(int delta) {
 		if(isDash){
-			
-		}
+				switch(movement) {
+				case 0 :
+					x-=speedDash*delta;
+					
+					 if (Collisions.collisionCircleAnyRect(this) || this.x<=200){
+						 x+=speedDash*delta;
+						 }
+					 break;
+				case 1 :
+					x+=speedDash*delta;
+					 if(Collisions.collisionCircleAnyRect(this) || this.x>=600){
+						 x-=speedDash*delta;}
+					 break;
+					 }
+				}
+		
 	}
 		
 	

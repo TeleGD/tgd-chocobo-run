@@ -8,7 +8,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import fr.tgd.util.FontManager;
+//import fr.tgd.util.FontManager;
 
 public class PauseMenu extends BasicGameState{
 	private String nom = "Pause";
@@ -43,12 +43,12 @@ public class PauseMenu extends BasicGameState{
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 
 		g.setColor(Color.blue);
-		g.setFont(FontManager.menuTitre2TTF);
+		//g.setFont(FontManager.menuTitre2TTF);
 
 		g.drawString(this.nom, 200, 200);
 
 		g.setColor(Color.white);
-		g.setFont(FontManager.menuItemsTTF);
+		//g.setFont(FontManager.menuItemsTTF);
 
 		for (int i = 0; i < nbrOption; i++) {
 			g.drawString(this.items[i], 300, 280 + 50 * i);

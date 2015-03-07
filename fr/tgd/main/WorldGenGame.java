@@ -19,7 +19,7 @@ import fr.tgd.world.World;
 public class WorldGenGame extends BasicGameState{
 
 	
-	int ID = 1;
+	public static int ID = 1;
 	
 	private World world = new World();
 	private WallGenerator gen = new WallGenerator(world) ;

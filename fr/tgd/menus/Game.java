@@ -21,8 +21,11 @@ public class Game extends StateBasedGame {
   @Override
   public void initStatesList(GameContainer container) throws SlickException {
 
+	addState(new MainMenu());
+	addState(new GOMenu());
+	addState(new PauseMenu());
 	addState(new WorldGenGame());
-	addState(new GOMenu());	
+
 
   }
 }

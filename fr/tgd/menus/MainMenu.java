@@ -11,13 +11,15 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import fr.tgd.util.FontManager;
+
+import fr.tgd.main.WorldGenGame;
+//import fr.tgd.util.FontManager;
 import fr.tgd.world.Character;
 import fr.tgd.world.World;
 
 public class MainMenu extends BasicGameState{
 	
-	int ID = 2;
+	public int ID = 2;
 
 	private String nom = "Menu Principal";
 	private String[] items = { "Jouer", "Quitter", "Scores" };
@@ -29,11 +31,13 @@ public class MainMenu extends BasicGameState{
 	}
 
 	static GameContainer container;
+	static StateBasedGame game;
 	int selection = 0;
 
 	 public void init(GameContainer container, StateBasedGame game) throws SlickException {
 	        this.container = container;
 	        container.setShowFPS(false);
+	        this.game=game;
 	 }
 
 	 public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
@@ -43,22 +47,21 @@ public class MainMenu extends BasicGameState{
 	 public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 			
 		 	g.setColor(Color.red);
-			g.setFont(FontManager.menuTitre2TTF);
+			//g.setFont(FontManager.menuTitre2TTF);
 
-			g.drawString("132", 0, 0);
 			g.drawString("test",200f, 200f);
 
 			g.setColor(Color.white);
-			g.setFont(FontManager.menuItemsTTF);
+			//g.setFont(FontManager.menuItemsTTF);
 
 			for (int i = 0; i < nbrOption; i++) {
 				g.drawString(this.items[i], 300, 280 + 50 * i);
 			}
-
 			g.drawString(">>", 230, 280 + 50 * selection);
 	 }
 
-	public void keyPressed(int key) {
+	 @Override
+	public void keyPressed(int key,char c) {
 		switch (key) {
 		case Input.KEY_DOWN:
 			if (selection < nbrOption - 1)
@@ -81,8 +84,9 @@ public class MainMenu extends BasicGameState{
 	
 	public void execOption() {
 		switch (selection) {
-		case 0:break;
-			
+		case 0:
+			game.enterState(WorldGenGame.ID);
+			break;
 		case 1:
 			container.exit();break;
 		case 2:break;

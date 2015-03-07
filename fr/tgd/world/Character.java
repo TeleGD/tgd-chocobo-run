@@ -10,7 +10,7 @@ public class Character extends Circle  {
 	protected int movement;
 	protected boolean isDash;
 	protected int speedDash;
-	public static double wallSpeed = 1;
+	public static double wallSpeed = 0.1;
 	private World world;
 	
 	public boolean getIsDash() {

@@ -8,8 +8,8 @@ import java.util.Random;
 public class WallGenerator {
 	private World world ;
 	private int nextInterval,time ;
-	private static int minInterval=200;
-	private static int maxInterval=450;
+	private static int minInterval=100;
+	private static int maxInterval=150;
 	public Random rand = new Random();
 	public static int nbWall ; 
 

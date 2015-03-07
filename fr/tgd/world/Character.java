@@ -3,6 +3,8 @@ package fr.tgd.world;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
+import fr.tgd.util.Collisions;
+
 public class Character extends Circle  {
 	protected int stamina;
 	protected float speedX;
@@ -45,16 +47,24 @@ public class Character extends Circle  {
 			switch(movement) {
 			case 0 :
 				x-=speedX*delta;
-				//if (Collisions.collisionCircleAnyRect(this) && this.x>=200){x+=speedX*delta;}
+				 if (Collisions.collisionCircleAnyRect(this) || this.x<=200){
+					 x+=speedX*delta;
+					 }
 				break;
 			case 1 : 
 				x+=speedX*delta;
-				//if(Collisions.collisionCircleAnyRect(this) && this.x<=600){x-=speedX*delta;}
+				 if(Collisions.collisionCircleAnyRect(this) || this.x>=600){
+					 x-=speedX*delta;}
 				break;
 		}
 		}
 	}
 	
+	public void dash(int delta) {
+		if(isDash){
+			
+		}
+	}
 		
 	
 	

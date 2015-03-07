@@ -17,7 +17,7 @@ public class Character extends Circle  {
 	public static double wallSpeed = 0.1;
 	private World world;
 	private boolean dead=false;
-	protected double c;
+	protected static double c;
 	private boolean invincible=false;
 	private int mult=1;
 	private Color color=Color.black;
@@ -134,7 +134,7 @@ public class Character extends Circle  {
 		c+=wallSpeed*delta*mult;
 	}
 	
-	public double getScore(){
+	public static double getScore(){
 		return c;
 	}
 	public void setScore(double score){

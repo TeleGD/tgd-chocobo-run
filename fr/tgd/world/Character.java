@@ -15,32 +15,15 @@ public class Character extends Circle {
 	protected int speedDash;
 	public static double wallSpeed = 0.1;
 	private World world;
-<<<<<<< HEAD
-	
-	private Timer timerShield = new Timer();
-	private Timer timerDouble = new Timer();
-	private Timer timerAccel = new Timer();
 	private boolean dead=false;
 	protected static double c;
 	private boolean invincible=false;
 	private int mult=1;
 	private Color color=Color.black;
 	public boolean inv = false;
-
-=======
-
-	private boolean dead = false;
-	private static double c;
-	private boolean invincible = false;
-	private int mult = 1;
-	private Color color = Color.black;
-	boolean inv;
-
 	private Timer timerShield = new Timer();
 	private Timer timerDouble = new Timer();
 	private Timer timerAccel = new Timer();
->>>>>>> b84fa7799a3586f36e8ed076b70239d221872c70
-
 	private Timer timerInv = new Timer();
 
 	public double getWallSpeed() {
@@ -126,10 +109,6 @@ public class Character extends Circle {
 			World.getBonuses().remove(
 					WorldGenGame.world.getCollidingBonus(this));
 		}
-<<<<<<< HEAD
-=======
-
->>>>>>> b84fa7799a3586f36e8ed076b70239d221872c70
 		if (WorldGenGame.currentKeysPressed[1]
 				|| WorldGenGame.currentKeysPressed[0]) {
 			if (isMoving) {
@@ -145,10 +124,6 @@ public class Character extends Circle {
 					if ((Collisions.collisionCircleAnyRect(this) && !invincible)|| this.x >= world.getW() - radius|| this.x <= radius) {
 						x -= speedX * delta;
 					}
-<<<<<<< HEAD
-=======
-
->>>>>>> b84fa7799a3586f36e8ed076b70239d221872c70
 					break;
 				}
 			}
@@ -156,28 +131,25 @@ public class Character extends Circle {
 	}
 
 	public void consumeStamina() {
-<<<<<<< HEAD
 		if (isDash && stamina > 0) {
 			stamina -= 20;
 		} else if (stamina <= 0) {
 			setIsDash(false);
 			if(inv)
-			setSpeedX(-0.3f);
+				setSpeedX(-0.3f);
 			else
-			setSpeedX(0.3f);
-=======
+				setSpeedX(0.3f);
 
 
-		if (isDash && stamina>0){
-			stamina-=20;
-		}else if(stamina <=0) {
-		setIsDash(false);
-		if(inv)
-		setSpeedX(-0.3f);
-		else
-		speedX=0.3f;
-
->>>>>>> b84fa7799a3586f36e8ed076b70239d221872c70
+			if (isDash && stamina>0){
+				stamina-=20;
+			}else if(stamina <=0) {
+				setIsDash(false);
+				if(inv)
+					setSpeedX(-0.3f);
+				else
+					speedX=0.3f;
+			}
 		}
 	}
 
@@ -240,18 +212,10 @@ public class Character extends Circle {
 				wallSpeed -= 0.2f;
 			timerAccel.stop();
 		}
-<<<<<<< HEAD
-=======
-
->>>>>>> b84fa7799a3586f36e8ed076b70239d221872c70
 		if(timerInv.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
 			color=Color.black;
 			speedX=0.3f;
 			inv = false;
-<<<<<<< HEAD
-=======
-
->>>>>>> b84fa7799a3586f36e8ed076b70239d221872c70
 			timerInv.stop();
 		}
 		recoverStamina();

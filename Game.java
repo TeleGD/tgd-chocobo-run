@@ -1,11 +1,14 @@
 
 import java.util.Random;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+
+import fr.tgd.world.*;
 
 public class Game extends BasicGame{	//Classe principale WindowGame
 	

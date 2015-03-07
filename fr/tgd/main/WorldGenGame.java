@@ -22,7 +22,7 @@ public class WorldGenGame extends BasicGameState {
 
 	private World world = new World();
 	private WallGenerator gen = new WallGenerator(world);
-	private Character character;
+	public static Character character;
 
 	private GameContainer container;
 	StateBasedGame game;

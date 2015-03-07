@@ -16,6 +16,7 @@ public class Character extends Circle  {
 	private World world;
 	private boolean dead=false;
 	protected double c;
+	private boolean invicible=false;
 	
 	public boolean getIsDash() {
 		return isDash;
@@ -48,6 +49,12 @@ public class Character extends Circle  {
 	}
 	public void setStamina(int stamina) {
 		this.stamina = stamina;
+	}
+	public boolean isInvicible() {
+		return invicible;
+	}
+	public void setInvicible(boolean invicible) {
+		this.invicible = invicible;
 	}
 	public float getSpeedX() {
 		return speedX;

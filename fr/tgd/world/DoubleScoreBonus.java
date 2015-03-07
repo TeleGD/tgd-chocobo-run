@@ -6,6 +6,8 @@ public class DoubleScoreBonus extends Bonus {
 		super(x, y, radius);
 	}
 	
-	
+	public void used(){
+		
+	}
 
 }

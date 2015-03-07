@@ -6,6 +6,8 @@ public class PasseMurailleBonus extends Bonus {
 		super(x, y, radius);
 	}
 
-	
+	public void used(){
+		
+	}
 	
 }

@@ -6,4 +6,5 @@ public interface Scene
 {
 	public void update();
 	public void draw(Graphics g);
+	public void keyPressed(int key);
 }

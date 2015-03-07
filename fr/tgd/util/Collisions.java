@@ -80,5 +80,14 @@ public class Collisions {
 	public static boolean collisionCircleCircle(Circle circle1, Circle circle2){
 		return (distanceCircleCircle(circle1,circle2)<=0);
 	}
+	
+	public static boolean collisionCircleAnyCircle(Circle circle){
+		for(int i=0;i<World.getBonuses().size();i++){
+			if(collisionCircleCircle(circle,World.getBonuses().get(i))){
+				return true;
+			}
+		}
+		return false;
+	}
 
 }

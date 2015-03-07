@@ -1,10 +1,12 @@
 package fr.tgd.world;
 
-import java.awt.Color;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
+import fr.tgd.main.WorldGenGame;
 import fr.tgd.util.Collisions;
+import fr.tgd.util.Timer;
 
 public class Character extends Circle  {
 	protected int stamina;
@@ -16,8 +18,24 @@ public class Character extends Circle  {
 	private World world;
 	private boolean dead=false;
 	protected double c;
-	private boolean invicible=false;
+	private boolean invincible=false;
+	private int mult=1;
+	private Color color=Color.black;
 	
+	private Timer timer=new Timer();
+	
+	public double getWallSpeed() {
+		return wallSpeed;
+	}
+	public void setWallSpeed(double wallSpeed) {
+		Character.wallSpeed = wallSpeed;
+	}
+	public int getMult() {
+		return mult;
+	}
+	public void setMult(int mult) {
+		this.mult = mult;
+	}
 	public boolean getIsDash() {
 		return isDash;
 	}
@@ -50,11 +68,11 @@ public class Character extends Circle  {
 	public void setStamina(int stamina) {
 		this.stamina = stamina;
 	}
-	public boolean isInvicible() {
-		return invicible;
+	public boolean isInvincible() {
+		return invincible;
 	}
-	public void setInvicible(boolean invicible) {
-		this.invicible = invicible;
+	public void setInvincible(boolean invicible) {
+		this.invincible = invicible;
 	}
 	public float getSpeedX() {
 		return speedX;
@@ -64,20 +82,27 @@ public class Character extends Circle  {
 	}
 	
 	public void movement(int delta) {
-		if(Collisions.collisionCircleAnyRect(this)){
+		if(Collisions.collisionCircleAnyRect(this)&&invincible == false){
 			die();
+		}
+		if(Collisions.collisionCircleAnyCircle(this)){
+			WorldGenGame.world.getCollidingBonus(this).used();
+			World.getBonuses().remove(WorldGenGame.world.getCollidingBonus(this));
+			color=Color.green;
+			invincible = true;
+			timer.start();
 		}
 		if(isMoving){
 			switch(movement) {
 			case 0 :
 				x-=speedX*delta;
-				 if (Collisions.collisionCircleAnyRect(this) || this.x<=radius){
+				 if ((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x<=radius){
 					 x+=speedX*delta;
 					 }
 				break;
 			case 1 : 
 				x+=speedX*delta;
-				 if(Collisions.collisionCircleAnyRect(this) || this.x>=world.getW()-radius){
+				 if((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x>=world.getW()-radius){
 					 x-=speedX*delta;}
 				break;
 		}
@@ -106,7 +131,7 @@ public class Character extends Circle  {
 	}
 	
 	public void score(int delta){
-		c+=wallSpeed*delta;
+		c+=wallSpeed*delta*mult;
 	}
 	
 	public double getScore(){
@@ -127,13 +152,20 @@ public class Character extends Circle  {
 	
 	public void update(int delta) {
 	movement(delta);
+	if(timer.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
+		color=Color.black;
+		invincible=false;
+		timer.stop();
+	}
 	recoverStamina();
 	consumeStamina();
 	score(delta);
 	}
 
 	public void render(Graphics g) {
+		g.setColor(color);
 		g.drawOval((float) x-radius, (float) y-radius, 20, 20);
+		g.setColor(Color.black);
 		g.fillRect(-150, 25, stamina/100, 25);
 		g.drawString(""+(int)getScore(),-150,50);
 	}

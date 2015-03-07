@@ -25,7 +25,7 @@ public class HelpMenu extends BasicGameState {
 			"Double Score : 2x plus de points pendant un temps limité !",
 			"Ghost : Vous pouvez traverser les murs !",
 			"Accélération : Le défilement accélère soudainement !",
-			"Inversion : les contrôles sont maintenant à l'envers !",
+			"Inversion : Les contrôles sont maintenant à l'envers !",
 			"Retour Menu" };
 
 	public int nbrOption = items.length;

@@ -126,7 +126,7 @@ public class WorldGenGame extends BasicGameState {
 	// ENTREES CLAVIER
 	// ======================================================================================
 
-	public boolean[] currentKeysPressed = new boolean[] { false, false };
+	public static boolean[] currentKeysPressed = new boolean[] { false, false };
 
 	public void keyReleased(int key, char c) {
 		if (Input.KEY_ESCAPE == key) {
@@ -134,23 +134,19 @@ public class WorldGenGame extends BasicGameState {
 		}
 		switch (key) {
 		case Input.KEY_LEFT:
-			if (currentKeysPressed[1]) {
-				character.setMoving(true);
-				character.setMovement(1);
-			} else {
-				character.setMoving(false);
-			}
-			currentKeysPressed[0] = false;
-			break;
+				WorldGenGame.currentKeysPressed[0]=false;
+				if(WorldGenGame.currentKeysPressed[1])
+					character.setMovement(1);
+				if(WorldGenGame.currentKeysPressed[0]==false && WorldGenGame.currentKeysPressed[1]==false)
+					character.setMoving(false);
+				break;
 		case Input.KEY_RIGHT:
-			if (currentKeysPressed[0]) {
-				character.setMoving(true);
-				character.setMovement(0);
-			} else {
-				character.setMoving(false);
-			}
-			currentKeysPressed[1] = false;
-			break;
+				WorldGenGame.currentKeysPressed[1]=false;
+				if(WorldGenGame.currentKeysPressed[0])
+					character.setMovement(0);
+				if(WorldGenGame.currentKeysPressed[0]==false && WorldGenGame.currentKeysPressed[1]==false)
+					character.setMoving(false);
+				break;
 		case Input.KEY_LSHIFT:
 			character.setSpeedX(0.3f);
 			character.setIsDash(false);
@@ -164,14 +160,14 @@ public class WorldGenGame extends BasicGameState {
 	public void keyPressed(int key, char c) {
 		switch (key) {
 		case Input.KEY_LEFT:
+			WorldGenGame.currentKeysPressed[0]=true;
 			character.setMoving(true);
 			character.setMovement(0);
-			currentKeysPressed[0] = true;
 			break;
 		case Input.KEY_RIGHT:
+			WorldGenGame.currentKeysPressed[1]=true;
 			character.setMoving(true);
 			character.setMovement(1);
-			currentKeysPressed[1] = true;
 			break;
 		case Input.KEY_LSHIFT:
 			if (character.getStamina() >= 50) {

@@ -26,7 +26,7 @@ public class BonusGenerator {
 			if (time>nextInterval/(Character.wallSpeed)*10){
 				int posX=rand.nextInt((int)world.getW());
 				Bonus bonus=null;
-				switch(rand.nextInt(3)){
+				switch(rand.nextInt(4)){
 				case 0:
 					bonus = new Shield(posX,0,5);
 					World.bonuses.add(bonus);
@@ -36,10 +36,15 @@ public class BonusGenerator {
 					World.bonuses.add(bonus);
 					break;
 				case 2:
+					bonus = new Inversion(posX,0,5);
+					World.bonuses.add(bonus);
+					break;
+				case 3:
 					bonus = new AccelerationBonus(posX,0,5);
 					World.bonuses.add(bonus);
 					break;
 				}
+				
 				if(Collisions.collisionCircleAnyRect(bonus))
 					World.bonuses.remove(bonus);
 				time=0;

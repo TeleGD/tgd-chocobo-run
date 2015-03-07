@@ -11,13 +11,11 @@ public class WallGenerator {
 	private static int minInterval=100;
 	private static int maxInterval=150;
 	public Random rand = new Random();
-<<<<<<< HEAD
-	private double coef=0.0002;
-	private static int holeSize = 25 ; 
-=======
-	private double coef=0.00004;
+
+	private double coef=0.00008;
+
 	private static int holeSize = 50 ; 
->>>>>>> 9a558a33ea5b9efbb4e14fff3379ce5af6b13725
+
 	
 	public WallGenerator(World world) {
 		this.world= world;

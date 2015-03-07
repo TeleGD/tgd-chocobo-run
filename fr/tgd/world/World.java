@@ -6,6 +6,7 @@ import org.newdawn.slick.Graphics;
 
 public class World {
 	static ArrayList<Wall> walls = new ArrayList<Wall>();
+	static ArrayList<Bonus> bonuses = new ArrayList<Bonus>();
 
 	private double w = 500;
 
@@ -29,11 +30,17 @@ public class World {
 		for (Wall wall : walls) {
 			wall.render(g);
 		}
+		for (Bonus bonus :bonuses) {
+			bonus.render(g);
+		}
 	}
 
 	public void update(int delta) {
 		for (Wall wall : walls) {
 			wall.update(delta);
+		}
+		for (Bonus bonus : bonuses) {
+			bonus.update(delta) ;
 		}
 	}
 

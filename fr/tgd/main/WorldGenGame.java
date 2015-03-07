@@ -12,6 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import fr.tgd.menus.GOMenu;
 import fr.tgd.menus.MainMenu;
+import fr.tgd.world.BonusGenerator;
 import fr.tgd.world.Character;
 import fr.tgd.world.WallGenerator;
 import fr.tgd.world.World;
@@ -22,6 +23,7 @@ public class WorldGenGame extends BasicGameState {
 
 	private World world = new World();
 	private WallGenerator gen = new WallGenerator(world);
+	private BonusGenerator ben = new BonusGenerator(world);
 	public static Character character;
 
 	private GameContainer container;
@@ -82,6 +84,7 @@ public class WorldGenGame extends BasicGameState {
 		world.update(delta);
 		character.update(delta);
 		gen.update(delta);
+		ben.update(delta,container);
 		
 		if(character.isDead()){
 			game.enterState(GOMenu.ID);

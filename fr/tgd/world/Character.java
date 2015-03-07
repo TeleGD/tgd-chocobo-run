@@ -1,7 +1,7 @@
 package fr.tgd.world;
 
-import java.awt.Color;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 import fr.tgd.util.Collisions;
@@ -129,7 +129,8 @@ public class Character extends Circle  {
 	}
 
 	public void render(Graphics g) {
-		g.drawOval((float) x-radius, (float) y-radius, 20, 20);
+		g.setColor(Color.black);
+		g.fillOval((float) x-radius, (float) y-radius, 20, 20);
 		g.fillRect(-150, 25, stamina/100, 25);
 		g.drawString(""+(int)getScore(),-150,50);
 	}

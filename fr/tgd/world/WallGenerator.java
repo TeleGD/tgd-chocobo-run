@@ -38,6 +38,7 @@ public class WallGenerator {
 				Character.wallSpeed+=delta*coef ;
 			}
 			
+			System.out.println(""+time);
 			time=0;
 			nextInterval= rand.nextInt(maxInterval-minInterval)+minInterval ; 
 		}

@@ -9,21 +9,8 @@ public class Character extends Circle  {
 	protected int stamina;
 	protected float speedX;
 	protected int movement;
-	protected boolean isDash;
-	protected int speedDash;
+
 	
-	public int getSpeedDash() {
-		return speedDash;
-	}
-	public void setSpeedDash(int speedDash) {
-		this.speedDash = speedDash;
-	}
-	public boolean isDash() {
-		return isDash;
-	}
-	public void setDash(boolean isDash) {
-		this.isDash = isDash;
-	}
 	public int getMovement() {
 		return movement;
 	}
@@ -38,7 +25,7 @@ public class Character extends Circle  {
 	}
 
 	protected boolean isMoving;
-	public Character(double x, double y, int stamina, float speedX, int radius ) {
+	public Character(double x, double y, int stamina, float speedX, int radius) {
 		super(x, y,radius);
 		this.stamina = stamina;
 		this.speedX = speedX;
@@ -74,34 +61,33 @@ public class Character extends Circle  {
 		}
 	}
 	
-	public void dash(int delta) {
-		if(isDash){
-				switch(movement) {
-				case 0 :
-					x-=speedDash*delta;
-					
-					 if (Collisions.collisionCircleAnyRect(this) || this.x<=200){
-						 x+=speedDash*delta;
-						 }
-					 break;
-				case 1 :
-					x+=speedDash*delta;
-					 if(Collisions.collisionCircleAnyRect(this) || this.x>=600){
-						 x-=speedDash*delta;}
-					 break;
-					 }
-				}
-		
-	}
 		
 	
+		
+	public int recoverStamina(){
+		if(stamina<10000){//12s pour devenir full
+			stamina++;
+		}
+		return stamina;
+	}
+	
+	public int score(){
+		int c=0;
+		c=(int)(c++);
+		return c;
+	}
 	
 	public void update(int delta) {
-	movement(delta);	
+	movement(delta);
+	recoverStamina();
+	score();
+	System.out.println(stamina);
 	}
 
 	public void render(Graphics g) {
 		g.drawOval((float) x, (float) y, 10, 10);
+		g.fillRect(10, 25, stamina/100, 25);
+		g.drawString(""+score(),10, 50);
 	}
 	
 	

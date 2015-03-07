@@ -72,7 +72,7 @@ public class WorldGenGame extends BasicGame{
     public void update(GameContainer container, int delta) throws SlickException {
     	world.update(delta);
     	character.update(delta);
-    	gen.update();
+    	gen.update(delta);
     	
     }
     //======================================================================================

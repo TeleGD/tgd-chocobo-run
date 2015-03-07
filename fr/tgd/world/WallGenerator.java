@@ -8,19 +8,19 @@ import java.util.Random;
 public class WallGenerator {
 	private World world ;
 	private int nextInterval,time ;
-	private static int minInterval=50 ;
-	private static int maxInterval=100 ;
+	private static int minInterval=100 ;
+	private static int maxInterval=200 ;
 	public Random rand = new Random();
-	
+	private double coef=0.000002;
 	private static int holeSize = 25 ; 
 	
 	public WallGenerator(World world) {
 		this.world= world;
 	}
 	
-	public void update() {
+	public void update(int delta) {
 		time++ ;
-		if(time > nextInterval/Character.wallSpeed) {
+		if(time > nextInterval/(Character.wallSpeed*delta)) {
 			ArrayList<Double> wallPos = calcWallPos();
 			
 			for(int i=0; i<(wallPos.size())/2+1; i++)
@@ -32,7 +32,7 @@ public class WallGenerator {
 					xRight = wallPos.get(2*i);
 				Wall wall = new Wall(xLeft, 0, xRight-xLeft, 20);
 				world.addWall(wall);
-				Character.wallSpeed+=0.02 ;
+				Character.wallSpeed+=delta*coef ;
 			}
 			
 			time=0;

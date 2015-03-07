@@ -51,7 +51,6 @@ public class World implements Scene
 	{
 		for(Wall wall : walls)
 		{
-			
 			return wall;
 		}
 		return null;

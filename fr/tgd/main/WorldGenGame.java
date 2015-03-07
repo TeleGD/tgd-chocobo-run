@@ -55,7 +55,7 @@ public class WorldGenGame extends BasicGame{
     public void init(GameContainer container) throws SlickException {
         this.container = container;
         container.setShowFPS(false);
-        character = new Character(world, 400d,500d,100,0.3f,20);
+        character = new Character(world, 400d,500d,100,0.3f,10);
     }
     
     //======================================================================================

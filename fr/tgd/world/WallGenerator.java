@@ -11,7 +11,7 @@ public class WallGenerator {
 	private static int minInterval=100 ;
 	private static int maxInterval=200 ;
 	public Random rand = new Random();
-	private double coef=0.00004;
+	private double coef=0.00008;
 	private static int holeSize = 50 ; 
 	
 	public WallGenerator(World world) {

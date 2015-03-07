@@ -73,7 +73,7 @@ public class Character extends Circle  {
 		
 	public void consumeStamina() {
 		if (isDash && stamina>=0){
-			stamina-=30;
+			stamina-=5;
 		}else {setIsDash(false);
 				setSpeedX(0.3f);
 		}

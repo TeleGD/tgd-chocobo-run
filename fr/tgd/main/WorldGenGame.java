@@ -111,6 +111,7 @@ break;
             		character.setSpeedX(0.9f);
             		character.setIsDash(true);
             	}
+            	break;
             					 
             case Input.KEY_S:break;
         }

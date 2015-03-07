@@ -1,5 +1,7 @@
 package fr.tgd.world;
 
+import java.awt.Color;
+
 import org.newdawn.slick.Graphics;
 
 import fr.tgd.util.Collisions;
@@ -12,6 +14,7 @@ public class Character extends Circle  {
 	protected int speedDash;
 	public static double wallSpeed = 0.1;
 	private World world;
+	protected int c;
 	
 	public boolean getIsDash() {
 		return isDash;
@@ -87,8 +90,7 @@ public class Character extends Circle  {
 	}
 	
 	public int score(){
-		int c=0;
-		c=(int)(c++);
+		c+=1;
 		return c;
 	}
 	
@@ -102,9 +104,8 @@ public class Character extends Circle  {
 	public void render(Graphics g) {
 		g.drawOval((float) x-radius, (float) y-radius, 20, 20);
 		g.fillRect(10, 25, stamina/100, 25);
-		g.drawString(""+score(),10, 50);
+		g.drawString(""+score(),10,50);
 	}
-	
 	
 	
 	

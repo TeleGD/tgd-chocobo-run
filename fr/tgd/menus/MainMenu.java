@@ -49,7 +49,7 @@ public class MainMenu extends BasicGameState{
 		 	g.setColor(Color.red);
 			//g.setFont(FontManager.menuTitre2TTF);
 
-			g.drawString("test",200f, 200f);
+			g.drawString(this.nom,200, 200);
 
 			g.setColor(Color.white);
 			//g.setFont(FontManager.menuItemsTTF);
@@ -82,17 +82,15 @@ public class MainMenu extends BasicGameState{
 		}
 	}
 	
-	 
 	public void execOption() {
 		switch (selection) {
 		case 0:
 			game.enterState(WorldGenGame.ID);
 			break;
+			
 		case 1:
 			container.exit();break;
-		case 2:
-			game.enterState(GOMenu.ID);
-			break;
+		case 2:break;
 			
 		}
 	}

@@ -8,7 +8,6 @@ public class World
 {
 	static ArrayList<Wall> walls = new ArrayList<Wall>();
 	
-	private Character character = new Character(0, 0, 0, 0, 0);
 	private double w = 500;
 	
 	public void addWall(Wall wall)
@@ -44,5 +43,15 @@ public class World
 	
 	public static ArrayList<Wall> getWalls(){
 		return walls;
+	}
+	
+	public Wall getCollidingWall(Circle c)
+	{
+		for(Wall wall : walls)
+		{
+			
+			return wall;
+		}
+		return null;
 	}
 }

@@ -10,7 +10,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
-import fr.tgd.menus.MainMenu;
+import fr.tgd.menus.*;
 import fr.tgd.menus.Scene;
 import fr.tgd.util.FontManager;
 
@@ -42,7 +42,7 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
 	
     public MenusGame() {
         super("Nuit Coding");
-        currentScene = new MainMenu();
+        currentScene = new GOMenu();
     }
     
     public static void setScene(Scene scene)
@@ -63,8 +63,8 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
         this.container = container;
         container.setShowFPS(false);
         
-    	Font menuTitreFont = new Font("Arial", Font.BOLD, 40);
-    	FontManager.menuTitreTTF = new TrueTypeFont(menuTitreFont, false);
+    	Font menuTitre1Font = new Font("Goudy Stout", Font.BOLD, 40);
+    	FontManager.menuTitre1TTF = new TrueTypeFont(menuTitre1Font, false);
     	Font menuItemsFont = new Font("Arial", Font.BOLD, 30);
     	FontManager.menuItemsTTF = new TrueTypeFont(menuItemsFont, false);
     }
@@ -100,14 +100,15 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
         }
     }
     
-
-    public void keyPressed(int key, char c) {
-        switch (key) {
-            case Input.KEY_UP:;break;
-            case Input.KEY_DOWN:break;
-            case Input.KEY_Z:break;
-            case Input.KEY_S:break;
-        }
-    }
+	public void keyPressed(int key, char c) {
+		switch (key) {
+		case Input.KEY_ESCAPE:container.exit();break;
+		default:
+			currentScene.keyPressed(key);
+			break;
+	//	case Input.KEY_ENTER:execOption();
+	//		break;
+		}
+	}
     
 }

@@ -20,7 +20,6 @@ public class WallGenerator {
 	
 	public void update() {
 		time++ ;
-		Character.wallSpeed += 0.05;
 		if(time > nextInterval/Character.wallSpeed) {
 			ArrayList<Double> wallPos = calcWallPos();
 			

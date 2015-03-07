@@ -1,7 +1,6 @@
 package fr.tgd.world;
 
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 
 import fr.tgd.util.Collisions;
 
@@ -12,19 +11,8 @@ public class Character extends Circle  {
 	protected boolean isDash;
 	protected int speedDash;
 	public static double wallSpeed = 1;
+	private World world;
 	
-	public int getSpeedDash() {
-		return speedDash;
-	}
-	public void setSpeedDash(int speedDash) {
-		this.speedDash = speedDash;
-	}
-	public boolean isDash() {
-		return isDash;
-	}
-	public void setDash(boolean isDash) {
-		this.isDash = isDash;
-	}
 	public int getMovement() {
 		return movement;
 	}
@@ -39,8 +27,9 @@ public class Character extends Circle  {
 	}
 
 	protected boolean isMoving;
-	public Character(double x, double y, int stamina, float speedX, int radius ) {
+	public Character(World world, double x, double y, int stamina, float speedX, int radius) {
 		super(x, y,radius);
+		this.world = world;
 		this.stamina = stamina;
 		this.speedX = speedX;
 	}
@@ -62,47 +51,45 @@ public class Character extends Circle  {
 			switch(movement) {
 			case 0 :
 				x-=speedX*delta;
-				 if (Collisions.collisionCircleAnyRect(this) || this.x<=200){
+				 if (Collisions.collisionCircleAnyRect(this) || this.x<=0){
 					 x+=speedX*delta;
 					 }
 				break;
 			case 1 : 
 				x+=speedX*delta;
-				 if(Collisions.collisionCircleAnyRect(this) || this.x>=600){
+				 if(Collisions.collisionCircleAnyRect(this) || this.x>=world.getW()){
 					 x-=speedX*delta;}
 				break;
 		}
 		}
 	}
 	
-	public void dash(int delta) {
-		if(isDash){
-				switch(movement) {
-				case 0 :
-					x-=speedDash*delta;
-					
-					 if (Collisions.collisionCircleAnyRect(this) || this.x<=200){
-						 x+=speedDash*delta;
-						 }
-					 break;
-				case 1 :
-					x+=speedDash*delta;
-					 if(Collisions.collisionCircleAnyRect(this) || this.x>=600){
-						 x-=speedDash*delta;}
-					 break;
-					 }
-				}
-		
-	}
 		
 	
+		
+	public int recoverStamina(){
+		if(stamina<10000){//12s pour devenir full
+			stamina++;
+		}
+		return stamina;
+	}
+	
+	public int score(){
+		int c=0;
+		c=(int)(c++);
+		return c;
+	}
 	
 	public void update(int delta) {
-	movement(delta);	
+	movement(delta);
+	recoverStamina();
+	score();
 	}
 
 	public void render(Graphics g) {
 		g.drawOval((float) x, (float) y, 10, 10);
+		g.fillRect(10, 25, stamina/100, 25);
+		g.drawString(""+score(),10, 50);
 	}
 	
 	

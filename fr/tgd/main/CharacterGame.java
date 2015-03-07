@@ -76,10 +76,13 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
         					 break;
         case Input.KEY_RIGHT: character.setMoving(false);
         					  break;
-        case Input.KEY_Z:break;
+        case Input.KEY_LSHIFT: character.setSpeedX(0.3f);
+        	break;
+       
         case Input.KEY_S:break;
     }
     }
+    
     
 
     public void keyPressed(int key, char c) {
@@ -90,7 +93,12 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
             case Input.KEY_RIGHT: character.setMoving(true);
 			 					  character.setMovement(1);
             					  break;
-            case Input.KEY_Z:break;
+            case Input.KEY_LSHIFT: 
+            	if (character.getStamina()>=2500) {
+            		character.setStamina(character.getStamina()-2500);
+            		character.setSpeedX(0.9f);
+            	}
+            					 
             case Input.KEY_S:break;
         }
     }

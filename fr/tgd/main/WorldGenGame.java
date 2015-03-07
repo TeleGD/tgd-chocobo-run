@@ -8,6 +8,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import fr.tgd.world.Character;
 import fr.tgd.world.WallGenerator;
 import fr.tgd.world.World;
 
@@ -16,10 +17,11 @@ public class WorldGenGame extends BasicGame{
 			new AppGameContainer(new WorldGenGame(), largeurW, hauteurW, false).start(); 
     }
 	
-	World world = new World();
-	WallGenerator gen = new WallGenerator(world) ;
+	private World world = new World();
+	private WallGenerator gen = new WallGenerator(world) ;
+	private Character character ;
 	
-	GameContainer container;
+	private GameContainer container;
 	
 	//======================================================================================
 	//DECLARATION DES CONSTANTES
@@ -46,6 +48,7 @@ public class WorldGenGame extends BasicGame{
     public void init(GameContainer container) throws SlickException {
         this.container = container;
         container.setShowFPS(false);
+        character = new Character(world, 400d,500d,100,0.3f,20);
     }
     
     //======================================================================================
@@ -57,6 +60,7 @@ public class WorldGenGame extends BasicGame{
     	g.fillRect(0, 0, container.getWidth(), container.getHeight());
     	g.translate((int)((container.getWidth()-world.getW())/2), 0);
     	world.render(g);
+    	character.render(g);
     	g.translate(-(int)((container.getWidth()-world.getW())/2), 0);
     }
 
@@ -67,6 +71,7 @@ public class WorldGenGame extends BasicGame{
     int time = 0;
     public void update(GameContainer container, int delta) throws SlickException {
     	world.update(delta);
+    	character.update(delta);
     	gen.update();
     	
     }
@@ -78,20 +83,34 @@ public class WorldGenGame extends BasicGame{
         if (Input.KEY_ESCAPE == key) {
             container.exit();
         }
-        if (Input.KEY_UP == key || Input.KEY_DOWN == key) {
-
-        }
-        if (Input.KEY_Z == key || Input.KEY_S == key) {
-
-        }
+        switch (key) {
+        case Input.KEY_LEFT: character.setMoving(false);
+        					 break;
+        case Input.KEY_RIGHT: character.setMoving(false);
+        					  break;
+        case Input.KEY_LSHIFT: character.setSpeedX(0.3f);
+        	break;
+       
+        case Input.KEY_S:break;
     }
+    }
+    
     
 
     public void keyPressed(int key, char c) {
         switch (key) {
-            case Input.KEY_UP:;break;
-            case Input.KEY_DOWN:break;
-            case Input.KEY_Z:break;
+            case Input.KEY_LEFT: character.setMoving(true);
+            					 character.setMovement(0);
+            					 break;
+            case Input.KEY_RIGHT: character.setMoving(true);
+			 					  character.setMovement(1);
+            					  break;
+            case Input.KEY_LSHIFT: 
+            	if (character.getStamina()>=2500) {
+            		character.setStamina(character.getStamina()-2500);
+            		character.setSpeedX(0.9f);
+            	}
+            					 
             case Input.KEY_S:break;
         }
     }

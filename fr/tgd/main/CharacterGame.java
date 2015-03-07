@@ -77,6 +77,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
         case Input.KEY_RIGHT: character.setMoving(false);
         					  break;
         case Input.KEY_LSHIFT: character.setSpeedX(0.3f);
+        					   character.setIsDash(false);
         	break;
        
         case Input.KEY_S:break;
@@ -94,9 +95,9 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 			 					  character.setMovement(1);
             					  break;
             case Input.KEY_LSHIFT: 
-            	if (character.getStamina()>=2500) {
-            		character.setStamina(character.getStamina()-2500);
+            	if (character.getStamina()>=50) {
             		character.setSpeedX(0.9f);
+            		character.setIsDash(true);
             	}
             					 
             case Input.KEY_S:break;

@@ -13,6 +13,12 @@ public class Character extends Circle  {
 	public static double wallSpeed = 1;
 	private World world;
 	
+	public boolean getIsDash() {
+		return isDash;
+	}
+	public void setIsDash(boolean isDash) {
+		this.isDash =isDash;
+	}
 	public int getMovement() {
 		return movement;
 	}
@@ -65,7 +71,13 @@ public class Character extends Circle  {
 	}
 	
 		
-	
+	public void consumeStamina() {
+		if (isDash && stamina>=0){
+			stamina-=30;
+		}else {setIsDash(false);
+				setSpeedX(0.3f);
+		}
+	}
 		
 	public int recoverStamina(){
 		if(stamina<10000){//12s pour devenir full
@@ -83,6 +95,7 @@ public class Character extends Circle  {
 	public void update(int delta) {
 	movement(delta);
 	recoverStamina();
+	consumeStamina();
 	score();
 	}
 

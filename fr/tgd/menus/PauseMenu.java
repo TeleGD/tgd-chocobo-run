@@ -33,7 +33,7 @@ public class PauseMenu implements Scene {
 	public void draw(Graphics g) {
 
 		g.setColor(Color.blue);
-		g.setFont(FontManager.menuTitre1TTF);
+		g.setFont(FontManager.menuTitre2TTF);
 
 		g.drawString(this.nom, 200, 200);
 

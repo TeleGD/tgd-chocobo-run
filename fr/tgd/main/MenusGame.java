@@ -11,12 +11,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
 import fr.tgd.menus.*;
-import fr.tgd.menus.Scene;
 import fr.tgd.util.FontManager;
 
 public class MenusGame extends BasicGame{	//Classe principale WindowGame
 
     private static MenusGame instance = new MenusGame();
+
     
     public static void main(String[] args) throws SlickException {
         new AppGameContainer(instance, largeurW, hauteurW, false).start(); 
@@ -30,7 +30,7 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
 	//======================================================================================
 	
 	static public int hauteurW=600,largeurW=800; 
-	private Scene currentScene;
+	private static Scene currentScene;
 
 	//======================================================================================
 	//DECLARATION DES VARIABLES
@@ -42,12 +42,12 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
 	
     public MenusGame() {
         super("Nuit Coding");
-        currentScene = new MainMenu();
+        setCurrentScene(new MainMenu());
     }
     
     public static void setScene(Scene scene)
     {
-    	instance.currentScene = scene;
+    	currentScene = scene;
     }
     
     public static Scene getScene()
@@ -76,7 +76,7 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-    	currentScene.draw(g);
+    	getCurrentScene().draw(g);
     }
 
     //======================================================================================
@@ -84,7 +84,7 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void update(GameContainer container, int delta) throws SlickException {
-    	currentScene.update();
+    	getCurrentScene().update();
     }
     //======================================================================================
     //ENTREES CLAVIER
@@ -106,11 +106,17 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
 		switch (key) {
 		case Input.KEY_ESCAPE:container.exit();break;
 		default:
-			currentScene.keyPressed(key);
+			getCurrentScene().keyPressed(key);
 			break;
-	//	case Input.KEY_ENTER:execOption();
-	//		break;
 		}
+	}
+
+	public Scene getCurrentScene() {
+		return currentScene;
+	}
+
+	public void setCurrentScene(Scene currentScene) {
+		this.currentScene = currentScene;
 	}
     
 }

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Graphics;
 
-public class World
+import fr.tgd.menus.Scene;
+
+public class World implements Scene
 {
 	static ArrayList<Wall> walls = new ArrayList<Wall>();
 	
@@ -53,5 +55,23 @@ public class World
 			return wall;
 		}
 		return null;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(int key) {
+		// TODO Auto-generated method stub
+		
 	}
 }

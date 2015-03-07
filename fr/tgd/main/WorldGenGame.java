@@ -8,6 +8,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import fr.tgd.menus.MainMenu;
+import fr.tgd.menus.Scene;
 import fr.tgd.world.Character;
 import fr.tgd.world.WallGenerator;
 import fr.tgd.world.World;
@@ -16,6 +18,8 @@ public class WorldGenGame extends BasicGame{
 	public static void main(String[] args) throws SlickException {
 			new AppGameContainer(new WorldGenGame(), largeurW, hauteurW, false).start(); 
     }
+	
+ 
 	
 	private World world = new World();
 	private WallGenerator gen = new WallGenerator(world) ;
@@ -29,6 +33,7 @@ public class WorldGenGame extends BasicGame{
 	
 	static public int hauteurW=600,largeurW=800; 
 
+
 	//======================================================================================
 	//DECLARATION DES VARIABLES
 	//======================================================================================
@@ -40,6 +45,8 @@ public class WorldGenGame extends BasicGame{
     public WorldGenGame() {
         super("Nuit Coding");
     }
+    
+    
     
     //======================================================================================
     //FONCTION INIT

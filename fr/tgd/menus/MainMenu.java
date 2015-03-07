@@ -9,6 +9,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.TrueTypeFont;
 
 import fr.tgd.util.FontManager;
+import fr.tgd.world.World;
 
 public class MainMenu implements Scene {
 
@@ -67,10 +68,21 @@ public class MainMenu implements Scene {
 			else
 				selection = nbrOption - 1;
 			break;
-	/*  case Input.KEY_ENTER:
+		case Input.KEY_ENTER:
 			execOption();
 			break;
-		*/
+		
+		}
+	}
+	
+	public void execOption() {
+		switch (selection) {
+		case 0:
+			
+		case 1:
+			container.exit();
+		case 2:
+			fr.tgd.main.MenusGame.setScene(new GOMenu());
 		}
 	}
 

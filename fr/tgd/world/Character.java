@@ -57,13 +57,13 @@ public class Character extends Circle  {
 			switch(movement) {
 			case 0 :
 				x-=speedX*delta;
-				 if (Collisions.collisionCircleAnyRect(this) || this.x<=0){
+				 if (Collisions.collisionCircleAnyRect(this) || this.x<=radius){
 					 x+=speedX*delta;
 					 }
 				break;
 			case 1 : 
 				x+=speedX*delta;
-				 if(Collisions.collisionCircleAnyRect(this) || this.x>=world.getW()){
+				 if(Collisions.collisionCircleAnyRect(this) || this.x>=world.getW()-radius){
 					 x-=speedX*delta;}
 				break;
 		}
@@ -100,7 +100,7 @@ public class Character extends Circle  {
 	}
 
 	public void render(Graphics g) {
-		g.drawOval((float) x, (float) y, 10, 10);
+		g.drawOval((float) x-radius, (float) y-radius, 20, 20);
 		g.fillRect(10, 25, stamina/100, 25);
 		g.drawString(""+score(),10, 50);
 	}

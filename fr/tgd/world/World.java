@@ -49,7 +49,6 @@ public class World
 	{
 		for(Wall wall : walls)
 		{
-			
 			return wall;
 		}
 		return null;

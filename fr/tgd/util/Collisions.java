@@ -7,32 +7,48 @@ import fr.tgd.world.World;
 public class Collisions {
 	public static double distanceCircleRect(Circle circle, Rectangle rectangle){
 
-		if(circle.getY()+circle.getRadius()<rectangle.getY()){
-			if(circle.getX()+circle.getRadius()<rectangle.getX()){
-				return (Math.sqrt(Math.pow((rectangle.getY()-circle.getY()),2)+Math.pow((rectangle.getX()-circle.getX()),2)));
+		//DESSUS
+		if(circle.getY()<rectangle.getY()){
+			//GAUCHE
+			if(circle.getX()<rectangle.getX()){
+				return distancePointPoint(circle.getX(),circle.getY(),rectangle.getX(),rectangle.getY());
+			//DROITE
 			}else if(circle.getX()>rectangle.getX()+rectangle.getWidth()){
-				return (Math.sqrt(Math.pow((rectangle.getY()-circle.getY()),2)+Math.pow((rectangle.getX()+rectangle.getWidth()-circle.getX()),2)));
+				return distancePointPoint(circle.getX(),circle.getY(),rectangle.getX()+rectangle.getWidth(),rectangle.getY());
+			//MILIEU
 			}else{
 				return (rectangle.getY()-circle.getY());
 			}
+		//DESSOUS
 		}else if(circle.getY()>rectangle.getY()+rectangle.getHight()){
-			if(circle.getX()+circle.getRadius()<rectangle.getX()){
-				return (Math.sqrt(Math.pow((rectangle.getY()+rectangle.getHight()-circle.getY()),2)+Math.pow((rectangle.getX()-circle.getX()),2)));
+			//GAUCHE
+			if(circle.getX()<rectangle.getX()){
+				return distancePointPoint(circle.getX(),circle.getY(),rectangle.getX(),rectangle.getY()+rectangle.getHight());
+			//DROITE
 			}else if(circle.getX()>rectangle.getX()+rectangle.getWidth()){
-				return (Math.sqrt(Math.pow((rectangle.getY()+rectangle.getHight()-circle.getY()),2)+Math.pow((rectangle.getX()+rectangle.getWidth()-circle.getX()),2)));
+				return distancePointPoint(circle.getX(),circle.getY(),rectangle.getX()+rectangle.getWidth(),rectangle.getY()+rectangle.getHight());
+			//MILIEU
 			}else{
 				return (circle.getY()-(rectangle.getY()+rectangle.getHight()));
 			}
+		//MILIEU
 		}else{
-			if(circle.getX()+circle.getRadius()<rectangle.getX()){
+			//GAUCHE
+			if(circle.getX()<rectangle.getX()){
 				return rectangle.getX()-circle.getX();
+			//DROITE
 			}else if(circle.getX()>rectangle.getX()+rectangle.getWidth()){
 				return circle.getX()-(rectangle.getX()+rectangle.getWidth());
+			//MILIEU
 			}else{
 				return 0;
 			}
 		}
 
+	}
+	
+	public static double distancePointPoint(double x1, double y1, double x2, double y2){
+		return (Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2)));
 	}
 
 	public static double distanceCircleCircle(Circle circle1, Circle circle2){
@@ -49,7 +65,7 @@ public class Collisions {
 	}
 	
 	public static boolean collisionCircleRect(Circle circle, Rectangle rectangle){
-		return (distanceCircleRect(circle,rectangle)<=0);
+		return (distanceCircleRect(circle,rectangle)<=circle.getRadius());
 	}
 	
 	public static boolean collisionCircleAnyRect(Circle circle){

@@ -27,7 +27,6 @@ public class AccelerationBonus extends Bonus{
 	
 	public void used(){
 		WorldGenGame.character.setColor(Color.magenta);
-		WorldGenGame.character.getTimerDouble().start();
 		WorldGenGame.character.setWallSpeed(WorldGenGame.character.getWallSpeed()+0.2f);
 		WorldGenGame.character.getTimerAccel().start();
 		

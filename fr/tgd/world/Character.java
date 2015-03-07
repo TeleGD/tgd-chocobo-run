@@ -165,6 +165,9 @@ public class Character extends Circle  {
 	}
 	if(timerAccel.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
 		color=Color.black;
+		if(wallSpeed<=0.2f)
+		wallSpeed=0.1f;
+		else
 		wallSpeed-=0.2f;
 		timerAccel.stop();
 	}

@@ -21,7 +21,7 @@ public class WorldGenGame extends BasicGameState {
 
 	public static int ID = 1;
 
-	private World world = new World();
+	public static World world = new World();
 	private WallGenerator gen = new WallGenerator(world);
 	private BonusGenerator ben = new BonusGenerator(world);
 	public static Character character;
@@ -88,16 +88,15 @@ public class WorldGenGame extends BasicGameState {
 		gen.update(delta);
 		ben.update(delta,container);
 		
-		if(character.isDead()){
-
-
 		if (character.isDead()) {
 			game.enterState(GOMenu.ID);
 			character.setDead(false);
 			world.removeAllWalls();
 		}
+		
+		
 
-	}}
+	}
 
 	// ======================================================================================
 	// ENTREES CLAVIER

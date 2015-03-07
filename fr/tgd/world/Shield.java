@@ -12,13 +12,13 @@ public class Shield extends Bonus{
 	public void update(int delta){
 		super.update(delta);
 		if(timer.getTime()>5000 && !Collisions.collisionCircleAnyRect(WorldGenGame.character)){
-			WorldGenGame.character.setInvicible(false);
+			WorldGenGame.character.setInvincible(false);
 			timer.stop();
 		}
 	}
 
 	public void used(){
-		WorldGenGame.character.setInvicible(true);
+		WorldGenGame.character.setInvincible(true);
 	}
 	
 }

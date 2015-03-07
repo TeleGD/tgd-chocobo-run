@@ -23,7 +23,7 @@ public class BonusGenerator {
 	
 	public void update(int delta,GameContainer container) {
 			time++;
-			if (time>nextInterval/(Character.wallSpeed)*18){
+			if (time>nextInterval/(Character.wallSpeed)*10){
 				int posX=rand.nextInt((int)world.getW());
 				Bonus bonus = new Shield(posX,0,5);
 				World.bonuses.add(bonus);

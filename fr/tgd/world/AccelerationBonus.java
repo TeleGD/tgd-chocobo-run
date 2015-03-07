@@ -12,7 +12,7 @@ public class AccelerationBonus extends Bonus{
 	public void update(int delta){
 		super.update(delta);
 		if(timer.getTime()>3000 && !Collisions.collisionCircleAnyRect(WorldGenGame.character)){
-			WorldGenGame.character.setInvicible(false);
+			WorldGenGame.character.setInvincible(false);
 			timer.stop();
 		}
 	}

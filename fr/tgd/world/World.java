@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Graphics;
 
+import fr.tgd.util.Collisions;
+
 public class World {
 	static ArrayList<Wall> walls = new ArrayList<Wall>();
 	static ArrayList<Bonus> bonuses = new ArrayList<Bonus>();
@@ -47,10 +49,23 @@ public class World {
 	public static ArrayList<Wall> getWalls() {
 		return walls;
 	}
+	
+	public static ArrayList<Bonus> getBonuses() {
+		return bonuses;
+	}
 
 	public Wall getCollidingWall(Circle c) {
 		for (Wall wall : walls) {
+			if(Collisions.collisionCircleRect(c,wall))
 			return wall;
+		}
+		return null;
+	}
+	
+	public Bonus getCollidingBonus(Circle c) {
+		for (Bonus bonus : bonuses) {
+			if(Collisions.collisionCircleCircle(c,bonus))
+			return bonus;
 		}
 		return null;
 	}

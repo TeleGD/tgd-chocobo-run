@@ -37,7 +37,7 @@ public class MainMenu implements Scene {
 	public void draw(Graphics g) {
 
 		g.setColor(Color.red);
-		g.setFont(FontManager.menuTitre1TTF);
+		g.setFont(FontManager.menuTitre2TTF);
 
 		g.drawString(this.nom, 200, 200);
 

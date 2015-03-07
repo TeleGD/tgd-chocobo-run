@@ -42,7 +42,7 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
 	
     public MenusGame() {
         super("Nuit Coding");
-        currentScene = new GOMenu();
+        currentScene = new MainMenu();
     }
     
     public static void setScene(Scene scene)
@@ -65,6 +65,8 @@ public class MenusGame extends BasicGame{	//Classe principale WindowGame
         
     	Font menuTitre1Font = new Font("Goudy Stout", Font.BOLD, 40);
     	FontManager.menuTitre1TTF = new TrueTypeFont(menuTitre1Font, false);
+    	Font menuTitre2Font = new Font("Kristen ITC", Font.BOLD, 40);
+    	FontManager.menuTitre2TTF = new TrueTypeFont(menuTitre2Font, false);
     	Font menuItemsFont = new Font("Arial", Font.BOLD, 30);
     	FontManager.menuItemsTTF = new TrueTypeFont(menuItemsFont, false);
     }

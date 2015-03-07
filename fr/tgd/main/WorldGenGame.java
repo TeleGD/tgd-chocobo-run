@@ -148,6 +148,7 @@ public class WorldGenGame extends BasicGameState {
 					character.setMoving(false);
 				break;
 		case Input.KEY_LSHIFT:
+			if(character.getIsDash())
 			character.setSpeedX(character.getSpeedX()/2);
 			character.setIsDash(false);
 			break;

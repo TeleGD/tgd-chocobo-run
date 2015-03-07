@@ -1,12 +1,15 @@
 package fr.tgd.main;
 
 import java.util.Random;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+
+import fr.tgd.menus.Game;
 
 public class MainCollisions extends BasicGame{	//Classe principale WindowGame
 	

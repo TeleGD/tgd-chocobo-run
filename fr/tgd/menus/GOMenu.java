@@ -1,13 +1,26 @@
 package fr.tgd.menus;
 
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+
+import fr.tgd.menus.MainMenu;
+import fr.tgd.world.Character;
+import fr.tgd.world.WallGenerator;
+import fr.tgd.world.World;
+
 
 import fr.tgd.util.FontManager;
 
-public class GOMenu implements Scene {
+public class GOMenu extends BasicGameState{
+	
+	public static int ID = 3;
 	
 	private String nom = "GAME OVER";
 	private String[] items = { "Re-jouer", "Quitter" };
@@ -21,17 +34,16 @@ public class GOMenu implements Scene {
 	static GameContainer container;
 	int selection = 0;
 
-	public GOMenu() {
+	 public void init(GameContainer container, StateBasedGame game) throws SlickException {
+	        this.container = container;
+	        container.setShowFPS(false);
+	 }
 
-	}
+	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+    	
+	 }
 
-	@Override
-	public void update() {
-
-	}
-
-	@Override
-	public void draw(Graphics g) {
+	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 
 		g.setColor(Color.red);
 		g.setFont(FontManager.menuTitre1TTF);
@@ -49,7 +61,6 @@ public class GOMenu implements Scene {
 
 	}
 
-	@Override
 	public void keyPressed(int key) {
 		switch (key) {
 		case Input.KEY_DOWN:
@@ -69,6 +80,10 @@ public class GOMenu implements Scene {
 			break;
 		*/
 		}
+	}
+	
+	public int getID(){
+		return ID;
 	}
 	
 }

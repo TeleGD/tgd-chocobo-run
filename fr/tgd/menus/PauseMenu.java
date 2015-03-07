@@ -4,14 +4,19 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
 
 import fr.tgd.util.FontManager;
 
-public class PauseMenu implements Scene {
+public class PauseMenu extends BasicGameState{
 	private String nom = "Pause";
 	private String[] items = { "Continuer", "Quitter" };
 
 	public int nbrOption = items.length;
+	
+	int ID = 4;
 
 	public String[] getItems() {
 		return this.items;
@@ -25,12 +30,17 @@ public class PauseMenu implements Scene {
 	}
 
 	@Override
-	public void update() {
+	 public void init(GameContainer container, StateBasedGame game) throws SlickException {
+        this.container = container;
+        container.setShowFPS(false);
+	}
 
+	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+    	
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 
 		g.setColor(Color.blue);
 		g.setFont(FontManager.menuTitre2TTF);
@@ -48,7 +58,7 @@ public class PauseMenu implements Scene {
 
 	}
 
-	@Override
+
 	public void keyPressed(int key) {
 		switch (key) {
 		case Input.KEY_DOWN:
@@ -68,6 +78,10 @@ public class PauseMenu implements Scene {
 			break;
 		*/
 		}
+	}
+	
+	public int getID(){
+		return ID;
 	}
 	
 }

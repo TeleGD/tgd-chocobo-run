@@ -6,12 +6,18 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
 
 import fr.tgd.util.FontManager;
+import fr.tgd.world.Character;
 import fr.tgd.world.World;
 
-public class MainMenu implements Scene {
+public class MainMenu extends BasicGameState{
+	
+	int ID = 2;
 
 	private String nom = "Menu Principal";
 	private String[] items = { "Jouer", "Quitter", "Scores" };
@@ -25,35 +31,33 @@ public class MainMenu implements Scene {
 	static GameContainer container;
 	int selection = 0;
 
-	public MainMenu() {
+	 public void init(GameContainer container, StateBasedGame game) throws SlickException {
+	        this.container = container;
+	        container.setShowFPS(false);
+	 }
 
-	}
+	 public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+	    	
+	 }
 
-	@Override
-	public void update() {
+	 public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+			
+		 	g.setColor(Color.red);
+			g.setFont(FontManager.menuTitre2TTF);
 
-	}
+			g.drawString("132", 0, 0);
+			g.drawString("test",200f, 200f);
 
-	@Override
-	public void draw(Graphics g) {
+			g.setColor(Color.white);
+			g.setFont(FontManager.menuItemsTTF);
 
-		g.setColor(Color.red);
-		g.setFont(FontManager.menuTitre2TTF);
+			for (int i = 0; i < nbrOption; i++) {
+				g.drawString(this.items[i], 300, 280 + 50 * i);
+			}
 
-		g.drawString(this.nom, 200, 200);
+			g.drawString(">>", 230, 280 + 50 * selection);
+	 }
 
-		g.setColor(Color.white);
-		g.setFont(FontManager.menuItemsTTF);
-
-		for (int i = 0; i < nbrOption; i++) {
-			g.drawString(this.items[i], 300, 280 + 50 * i);
-		}
-
-		g.drawString(">>", 230, 280 + 50 * selection);
-
-	}
-
-	@Override
 	public void keyPressed(int key) {
 		switch (key) {
 		case Input.KEY_DOWN:
@@ -77,13 +81,17 @@ public class MainMenu implements Scene {
 	
 	public void execOption() {
 		switch (selection) {
-		case 0:
+		case 0:break;
 			
 		case 1:
-			container.exit();
-		case 2:
-			fr.tgd.main.MenusGame.setScene(new GOMenu());
+			container.exit();break;
+		case 2:break;
+			
 		}
+	}
+	
+	public int getID(){
+		return ID;
 	}
 
 }

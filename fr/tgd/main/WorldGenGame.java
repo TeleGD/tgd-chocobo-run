@@ -7,25 +7,28 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
 
+import fr.tgd.menus.GOMenu;
 import fr.tgd.menus.MainMenu;
-import fr.tgd.menus.Scene;
 import fr.tgd.world.Character;
 import fr.tgd.world.WallGenerator;
 import fr.tgd.world.World;
 
-public class WorldGenGame extends BasicGame{
-	public static void main(String[] args) throws SlickException {
-			new AppGameContainer(new WorldGenGame(), largeurW, hauteurW, false).start(); 
-    }
+public class WorldGenGame extends BasicGameState{
+
 	
- 
+	int ID = 1;
 	
 	private World world = new World();
 	private WallGenerator gen = new WallGenerator(world) ;
 	private Character character ;
 	
 	private GameContainer container;
+	StateBasedGame game; 
+	
+	
 	
 	//======================================================================================
 	//DECLARATION DES CONSTANTES
@@ -41,34 +44,30 @@ public class WorldGenGame extends BasicGame{
 	//======================================================================================
 	//CREATEUR
 	//======================================================================================
-	
-    public WorldGenGame() {
-        super("Nuit Coding");
-    }
-    
-    
-    
+
     //======================================================================================
     //FONCTION INIT
     //======================================================================================
 
-    public void init(GameContainer container) throws SlickException {
+    public void init(GameContainer container, StateBasedGame game) throws SlickException {
         this.container = container;
         container.setShowFPS(false);
         character = new Character(world, 400d,500d,100,0.3f,10);
+        this.game = game;
     }
     
     //======================================================================================
     //FONCTION RENDER
     //======================================================================================
 
-    public void render(GameContainer container, Graphics g) throws SlickException {
+    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
     	g.setColor(Color.white);
     	g.fillRect(0, 0, container.getWidth(), container.getHeight());
     	g.translate((int)((container.getWidth()-world.getW())/2), 0);
     	world.render(g);
     	character.render(g);
     	g.translate(-(int)((container.getWidth()-world.getW())/2), 0);
+
     }
 
     //======================================================================================
@@ -76,7 +75,7 @@ public class WorldGenGame extends BasicGame{
     //======================================================================================
 
     int time = 0;
-    public void update(GameContainer container, int delta) throws SlickException {
+    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
     	world.update(delta);
     	character.update(delta);
     	gen.update(delta);
@@ -119,7 +118,11 @@ break;
             		character.setIsDash(true);
             	}
             					 
-            case Input.KEY_S:break;
+            case Input.KEY_S:game.enterState(GOMenu.ID); break;
         }
     }
+    
+    public int getID() {
+        return ID;
+      }
 }

@@ -60,7 +60,7 @@ public class WorldGenGame extends BasicGameState {
 	// ======================================================================================
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
-		throws SlickException {
+			throws SlickException {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, container.getWidth(), container.getHeight());
 		g.translate((int) ((container.getWidth() - world.getW()) / 2), 0);
@@ -68,8 +68,10 @@ public class WorldGenGame extends BasicGameState {
 		character.render(g);
 		g.translate(-(int) ((container.getWidth() - world.getW()) / 2), 0);
 		g.setColor(Color.black);
-		g.fillRect((float)(container.getWidth()-world.getW())/2-20,0,20,container.getHeight());
-		g.fillRect((float)((container.getWidth()-world.getW())/2+world.getW()),0,20,container.getHeight());
+		g.fillRect((float) (container.getWidth() - world.getW()) / 2 - 20, 0,
+				20, container.getHeight());
+		g.fillRect((float) ((container.getWidth() - world.getW()) / 2 + world
+				.getW()), 0, 20, container.getHeight());
 
 	}
 
@@ -87,27 +89,44 @@ public class WorldGenGame extends BasicGameState {
 		ben.update(delta,container);
 		
 		if(character.isDead()){
+
+
+		if (character.isDead()) {
 			game.enterState(GOMenu.ID);
 			character.setDead(false);
 			world.removeAllWalls();
 		}
 
-	}
+	}}
 
 	// ======================================================================================
 	// ENTREES CLAVIER
 	// ======================================================================================
 
+	public boolean[] currentKeysPressed = new boolean[] { false, false };
+
 	public void keyReleased(int key, char c) {
 		if (Input.KEY_ESCAPE == key) {
-			container.exit();
+			game.enterState(MainMenu.ID);
 		}
 		switch (key) {
 		case Input.KEY_LEFT:
-			character.setMoving(false);
+			if (currentKeysPressed[1]) {
+				character.setMoving(true);
+				character.setMovement(1);
+			} else {
+				character.setMoving(false);
+			}
+			currentKeysPressed[0] = false;
 			break;
 		case Input.KEY_RIGHT:
-			character.setMoving(false);
+			if (currentKeysPressed[0]) {
+				character.setMoving(true);
+				character.setMovement(0);
+			} else {
+				character.setMoving(false);
+			}
+			currentKeysPressed[1] = false;
 			break;
 		case Input.KEY_LSHIFT:
 			character.setSpeedX(0.3f);
@@ -124,10 +143,12 @@ public class WorldGenGame extends BasicGameState {
 		case Input.KEY_LEFT:
 			character.setMoving(true);
 			character.setMovement(0);
+			currentKeysPressed[0] = true;
 			break;
 		case Input.KEY_RIGHT:
 			character.setMoving(true);
 			character.setMovement(1);
+			currentKeysPressed[1] = true;
 			break;
 		case Input.KEY_LSHIFT:
 			if (character.getStamina() >= 50) {

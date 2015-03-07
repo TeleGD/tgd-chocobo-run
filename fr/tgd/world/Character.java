@@ -17,7 +17,7 @@ public class Character extends Circle  {
 	public static double wallSpeed = 0.1;
 	private World world;
 	private boolean dead=false;
-	protected static double c;
+	private static double c;
 	private boolean invincible=false;
 	private int mult=1;
 	private Color color=Color.black;

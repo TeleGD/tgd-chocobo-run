@@ -30,12 +30,13 @@ public class WorldGenGame extends BasicGameState {
 	private WallGenerator gen = new WallGenerator(world);
 	private BonusGenerator ben = new BonusGenerator(world);
 	public static Character character;
-	
 
 	private GameContainer container;
 	StateBasedGame game;
-	
-	public static Integer[] scoreList = new Integer[] {0, 0, 0, 0, 0};
+
+	public static int dernierScore;
+
+	public static Integer[] scoreList = new Integer[] { 0, 0, 0, 0, 0 };
 
 	// ======================================================================================
 	// DECLARATION DES CONSTANTES
@@ -56,7 +57,7 @@ public class WorldGenGame extends BasicGameState {
 	// ======================================================================================
 
 	public void init(GameContainer container, StateBasedGame game)
-			throws SlickException{
+			throws SlickException {
 		this.container = container;
 		container.setShowFPS(false);
 		character = new Character(world, 400d, 500d, 100, 0.3f, 10);
@@ -88,13 +89,13 @@ public class WorldGenGame extends BasicGameState {
 	// ======================================================================================
 
 	int time = 0;
-	
+
 	public void addScore(Integer score) {
 		Integer min = scoreList[0];
 		int imin = 0;
-		for (int i=1; i<5; i++) {
-			int k=scoreList[i];
-			if (k<min) {
+		for (int i = 1; i < 5; i++) {
+			int k = scoreList[i];
+			if (k < min) {
 				min = k;
 				imin = i;
 			}
@@ -109,17 +110,16 @@ public class WorldGenGame extends BasicGameState {
 		world.update(delta);
 		character.update(delta);
 		gen.update(delta);
-		ben.update(delta,container);
-		
+		ben.update(delta, container);
+
 		if (character.isDead()) {
-			addScore((int)character.getScore());
-			character.setScore(0);
 			game.enterState(GOMenu.ID);
+			dernierScore = (int) Character.getScore();
+			addScore(dernierScore);
 			character.setDead(false);
 			world.removeAllWalls();
+			character.setScore(0);
 		}
-		
-		
 
 	}
 

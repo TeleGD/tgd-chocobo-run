@@ -21,7 +21,7 @@ public class GOMenu extends BasicGameState {
 
 	public static int ID = 3;
 
-	private String nom = "GAME OVER,     score : "+(int)Character.getScore();
+	private String nom = "GAME OVER,     score : "+WorldGenGame.dernierScore;
 	private String[] items = { "Re-jouer", "Quitter" };
 
 	public int nbrOption = items.length;

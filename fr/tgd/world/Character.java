@@ -10,7 +10,7 @@ import fr.tgd.util.Timer;
 
 public class Character extends Circle  {
 	protected int stamina;
-	protected float speedX;
+	public float speedX;
 	protected int movement;
 	protected boolean isDash;
 	protected int speedDash;
@@ -21,11 +21,12 @@ public class Character extends Circle  {
 	private boolean invincible=false;
 	private int mult=1;
 	private Color color=Color.black;
-	
+
 	private Timer timerShield=new Timer();
 	private Timer timerDouble=new Timer();
 	private Timer timerAccel=new Timer();
-	
+	private Timer timerInv=new Timer();
+
 	public double getWallSpeed() {
 		return wallSpeed;
 	}
@@ -82,7 +83,7 @@ public class Character extends Circle  {
 	public void setSpeedX(float speed) {
 		this.speedX = speed;
 	}
-	
+
 	public void movement(int delta) {
 		if(Collisions.collisionCircleAnyRect(this)&&invincible == false){
 			die();
@@ -91,89 +92,100 @@ public class Character extends Circle  {
 			WorldGenGame.world.getCollidingBonus(this).used();
 			World.getBonuses().remove(WorldGenGame.world.getCollidingBonus(this));
 		}
-		if(isMoving){
-			switch(movement) {
-			case 0 :
-				x-=speedX*delta;
-				 if ((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x<=radius){
-					 x+=speedX*delta;
-					 }
-				break;
-			case 1 : 
-				x+=speedX*delta;
-				 if((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x>=world.getW()-radius){
-					 x-=speedX*delta;}
-				break;
-		}
+		if(WorldGenGame.currentKeysPressed[1] || WorldGenGame.currentKeysPressed[0]){
+			if(isMoving){
+				switch(movement) {
+				case 0 :
+					x-=speedX*delta;
+					if ((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x<=radius){
+						x+=speedX*delta;
+					}
+					break;
+				case 1 : 
+					x+=speedX*delta;
+					if((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x>=world.getW()-radius){
+						x-=speedX*delta;}
+					break;
+				}
+			}
 		}
 	}
-	
-		
+
+
 	public void consumeStamina() {
-		if (isDash && stamina>=0){
+		if (isDash && stamina>0){
 			stamina-=20;
-		}else {setIsDash(false);
-				setSpeedX(0.3f);
+		}else if(stamina <=0) {
+		setIsDash(false);
+		setSpeedX(0.3f);
 		}
 	}
-		
+
 	public int recoverStamina(){
 		if(stamina<10000){//12s pour devenir full
 			stamina++;
 		}
 		return stamina;
 	}
-	
+
 	public void die(){
 		wallSpeed = 0.1;
 		dead = true;
 		color=Color.black;
 		mult=1;
+		WorldGenGame.currentKeysPressed[0]=false;
+		WorldGenGame.currentKeysPressed[1]=false;
 	}
-	
+
 	public void score(int delta){
 		c+=wallSpeed*delta*mult;
 	}
-	
+
 	public double getScore(){
 		return c;
 	}
 	public void setScore(double score){
 		c=score;
 	}
-	
+
 	public boolean isDead(){
 		return dead;
 	}
 	public void setDead(Boolean dead){
 		this.dead = dead;
 	}
-	
-	
-	
+
+
+
 	public void update(int delta) {
-	movement(delta);
-	if(timerShield.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
-		color=Color.black;
-		invincible=false;
-		timerShield.stop();
-	}
-	if(timerDouble.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
-		color=Color.black;
-		mult=1;
-		timerDouble.stop();
-	}
-	if(timerAccel.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
-		color=Color.black;
-		if(wallSpeed<=0.2f)
-		wallSpeed=0.1f;
-		else
-		wallSpeed-=0.2f;
-		timerAccel.stop();
-	}
-	recoverStamina();
-	consumeStamina();
-	score(delta);
+		movement(delta);
+		if(timerShield.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
+			color=Color.black;
+			invincible=false;
+			timerShield.stop();
+		}
+		if(timerDouble.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
+			color=Color.black;
+			mult=1;
+			timerDouble.stop();
+		}
+		if(timerAccel.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
+			color=Color.black;
+			if(wallSpeed<=0.2f)
+				wallSpeed=0.1f;
+			else
+				wallSpeed-=0.2f;
+			timerAccel.stop();
+		}
+		if(timerInv.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
+			color=Color.black;
+			speedX=0.3f;
+			timerInv.stop();
+		}
+		recoverStamina();
+		consumeStamina();
+		score(delta);
+		
 	}
 
 	public void render(Graphics g) {
@@ -183,7 +195,7 @@ public class Character extends Circle  {
 		g.fillRect(-150, 25, stamina/100, 25);
 		g.drawString(""+(int)getScore(),-150,50);
 	}
-	
+
 	public void setColor(Color color) {
 		this.color=color;
 	}
@@ -196,7 +208,10 @@ public class Character extends Circle  {
 	public Timer getTimerAccel() {
 		return timerAccel;
 	}
-	
-	
-	
+	public Timer getTimerInv() {
+		return timerInv;
+	}
+
+
+
 }

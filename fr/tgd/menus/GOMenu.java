@@ -16,7 +16,6 @@ import fr.tgd.world.Character;
 import fr.tgd.world.WallGenerator;
 import fr.tgd.world.World;
 
-//import fr.tgd.util.FontManager;
 
 public class GOMenu extends BasicGameState {
 

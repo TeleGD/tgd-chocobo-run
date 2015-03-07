@@ -10,7 +10,6 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import fr.tgd.main.WorldGenGame;
 
-//import fr.tgd.util.FontManager;
 
 public class PauseMenu extends BasicGameState {
 	private String nom = "Pause";
@@ -51,12 +50,10 @@ public class PauseMenu extends BasicGameState {
 			throws SlickException {
 
 		g.setColor(Color.blue);
-		// g.setFont(FontManager.menuTitre2TTF);
 
 		g.drawString(this.nom, 200, 200);
 
 		g.setColor(Color.white);
-		// g.setFont(FontManager.menuItemsTTF);
 
 		for (int i = 0; i < nbrOption; i++) {
 			g.drawString(this.items[i], 300, 280 + 50 * i);

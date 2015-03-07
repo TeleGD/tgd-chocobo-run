@@ -8,6 +8,7 @@ public class Bonus extends Circle {
 		super(x, y, radius);
 	}
 	
+	
 	public void update(int delta){
 		
 	}

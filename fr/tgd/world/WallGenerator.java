@@ -12,7 +12,7 @@ public class WallGenerator {
 	private static int maxInterval=450;
 	public Random rand = new Random();
 
-	private double coef=0.0003;
+	private double coef=0.0015;
 
 	private static int holeSize = 50 ; 
 
@@ -23,7 +23,7 @@ public class WallGenerator {
 	
 	public void update(int delta) {
 		time++ ;
-		if(time > nextInterval/(Character.wallSpeed)) {
+		if(time > nextInterval/(Character.wallSpeed)/2) {
 			ArrayList<Double> wallPos = calcWallPos();
 			
 			for(int i=0; i<(wallPos.size())/2+1; i++)

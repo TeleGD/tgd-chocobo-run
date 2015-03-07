@@ -49,7 +49,7 @@ public class MainMenu extends BasicGameState{
 		 	g.setColor(Color.red);
 			//g.setFont(FontManager.menuTitre2TTF);
 
-			g.drawString("test",200f, 200f);
+			g.drawString(this.nom,200, 200);
 
 			g.setColor(Color.white);
 			//g.setFont(FontManager.menuItemsTTF);

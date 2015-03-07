@@ -12,6 +12,13 @@ public class BonusGenerator {
 		this.world = world;
 	}
 	
+	public void update(int delta) {
+		time++;
+		if ((WallGenerator.nbWall)%10 == 0 ) {
+			Bonus bonus = new Bonus(, ,5 ) ;
+		}
+		
+	}
 	
 	
 	

@@ -76,7 +76,7 @@ public class Character extends Circle  {
 		
 	public void consumeStamina() {
 		if (isDash && stamina>=0){
-			stamina-=5;
+			stamina-=20;
 		}else {setIsDash(false);
 				setSpeedX(0.3f);
 		}
@@ -103,8 +103,8 @@ public class Character extends Circle  {
 
 	public void render(Graphics g) {
 		g.drawOval((float) x-radius, (float) y-radius, 20, 20);
-		g.fillRect(10, 25, stamina/100, 25);
-		g.drawString(""+score(),10,50);
+		g.fillRect(-150, 25, stamina/100, 25);
+		g.drawString(""+score(),-150,50);
 	}
 	
 	

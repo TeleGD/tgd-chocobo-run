@@ -104,12 +104,18 @@ public class Character extends Circle  {
 		return c;
 	}
 	
+	public int getScore() {
+		return this.c;
+	}
+	
 	public boolean isDead(){
 		return dead;
 	}
 	public void setDead(Boolean dead){
 		this.dead = dead;
 	}
+	
+	
 	
 	public void update(int delta) {
 	movement(delta);

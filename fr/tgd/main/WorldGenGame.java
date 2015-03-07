@@ -58,13 +58,16 @@ public class WorldGenGame extends BasicGameState {
 	// ======================================================================================
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
-			throws SlickException {
+		throws SlickException {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, container.getWidth(), container.getHeight());
 		g.translate((int) ((container.getWidth() - world.getW()) / 2), 0);
 		world.render(g);
 		character.render(g);
 		g.translate(-(int) ((container.getWidth() - world.getW()) / 2), 0);
+		g.setColor(Color.black);
+		g.fillRect((float)(container.getWidth()-world.getW())/2-20,0,20,container.getHeight());
+		g.fillRect((float)((container.getWidth()-world.getW())/2+world.getW()),0,20,container.getHeight());
 
 	}
 

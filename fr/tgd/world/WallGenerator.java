@@ -40,6 +40,7 @@ public class WallGenerator {
 				nbWall++;
 			}
 			
+			System.out.println(""+time);
 			time=0;
 			nextInterval= rand.nextInt(maxInterval-minInterval)+minInterval ; 
 		}

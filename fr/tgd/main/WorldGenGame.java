@@ -16,114 +16,121 @@ import fr.tgd.world.Character;
 import fr.tgd.world.WallGenerator;
 import fr.tgd.world.World;
 
-public class WorldGenGame extends BasicGameState{
+public class WorldGenGame extends BasicGameState {
 
-	
 	public static int ID = 1;
-	
+
 	private World world = new World();
-	private WallGenerator gen = new WallGenerator(world) ;
-	private Character character ;
-	
+	private WallGenerator gen = new WallGenerator(world);
+	private Character character;
+
 	private GameContainer container;
-	StateBasedGame game; 
-	
-	
-	
-	//======================================================================================
-	//DECLARATION DES CONSTANTES
-	//======================================================================================
-	
-	static public int hauteurW=600,largeurW=800; 
+	StateBasedGame game;
 
+	// ======================================================================================
+	// DECLARATION DES CONSTANTES
+	// ======================================================================================
 
-	//======================================================================================
-	//DECLARATION DES VARIABLES
-	//======================================================================================
-	
-	//======================================================================================
-	//CREATEUR
-	//======================================================================================
+	static public int hauteurW = 600, largeurW = 800;
 
-    //======================================================================================
-    //FONCTION INIT
-    //======================================================================================
+	// ======================================================================================
+	// DECLARATION DES VARIABLES
+	// ======================================================================================
 
-    public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.container = container;
-        container.setShowFPS(false);
-        character = new Character(world, 400d,500d,100,0.3f,10);
-        this.game = game;
-    }
-    
-    //======================================================================================
-    //FONCTION RENDER
-    //======================================================================================
+	// ======================================================================================
+	// CREATEUR
+	// ======================================================================================
 
-    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-    	g.setColor(Color.white);
-    	g.fillRect(0, 0, container.getWidth(), container.getHeight());
-    	g.translate((int)((container.getWidth()-world.getW())/2), 0);
-    	world.render(g);
-    	character.render(g);
-    	g.translate(-(int)((container.getWidth()-world.getW())/2), 0);
+	// ======================================================================================
+	// FONCTION INIT
+	// ======================================================================================
 
-    }
+	public void init(GameContainer container, StateBasedGame game)
+			throws SlickException {
+		this.container = container;
+		container.setShowFPS(false);
+		character = new Character(world, 400d, 500d, 100, 0.3f, 10);
+		this.game = game;
+	}
 
-    //======================================================================================
-    //FONCTION UPDATE
-    //======================================================================================
+	// ======================================================================================
+	// FONCTION RENDER
+	// ======================================================================================
 
-    int time = 0;
-    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-    	world.update(delta);
-    	character.update(delta);
-    	gen.update(delta);
-    	
-    }
-    //======================================================================================
-    //ENTREES CLAVIER
-    //======================================================================================
+	public void render(GameContainer container, StateBasedGame game, Graphics g)
+			throws SlickException {
+		g.setColor(Color.white);
+		g.fillRect(0, 0, container.getWidth(), container.getHeight());
+		g.translate((int) ((container.getWidth() - world.getW()) / 2), 0);
+		world.render(g);
+		character.render(g);
+		g.translate(-(int) ((container.getWidth() - world.getW()) / 2), 0);
 
-    public void keyReleased(int key, char c) {
-        if (Input.KEY_ESCAPE == key) {
-            container.exit();
-        }
-        switch (key) {
-        case Input.KEY_LEFT: character.setMoving(false);
-        					 break;
-        case Input.KEY_RIGHT: character.setMoving(false);
-        					  break;
-        case Input.KEY_LSHIFT: character.setSpeedX(0.3f);
-		   character.setIsDash(false);
-break;
-       
-        case Input.KEY_S:break;
-    }
-    }
-    
-    
+	}
 
-    public void keyPressed(int key, char c) {
-        switch (key) {
-            case Input.KEY_LEFT: character.setMoving(true);
-            					 character.setMovement(0);
-            					 break;
-            case Input.KEY_RIGHT: character.setMoving(true);
-			 					  character.setMovement(1);
-            					  break;
-            case Input.KEY_LSHIFT: 
-            	if (character.getStamina()>=50) {
-            		character.setSpeedX(0.9f);
-            		character.setIsDash(true);
-            	}
-            	break;
-            					 
-            case Input.KEY_S:game.enterState(GOMenu.ID); break;
-        }
-    }
-    
-    public int getID() {
-        return ID;
-      }
+	// ======================================================================================
+	// FONCTION UPDATE
+	// ======================================================================================
+
+	int time = 0;
+
+	public void update(GameContainer container, StateBasedGame game, int delta)
+			throws SlickException {
+		world.update(delta);
+		character.update(delta);
+		gen.update(delta);
+
+	}
+
+	// ======================================================================================
+	// ENTREES CLAVIER
+	// ======================================================================================
+
+	public void keyReleased(int key, char c) {
+		if (Input.KEY_ESCAPE == key) {
+			container.exit();
+		}
+		switch (key) {
+		case Input.KEY_LEFT:
+			character.setMoving(false);
+			break;
+		case Input.KEY_RIGHT:
+			character.setMoving(false);
+			break;
+		case Input.KEY_LSHIFT:
+			character.setSpeedX(0.3f);
+			character.setIsDash(false);
+			break;
+
+		case Input.KEY_S:
+			break;
+		}
+	}
+
+	public void keyPressed(int key, char c) {
+		switch (key) {
+		case Input.KEY_LEFT:
+			character.setMoving(true);
+			character.setMovement(0);
+			break;
+		case Input.KEY_RIGHT:
+			character.setMoving(true);
+			character.setMovement(1);
+			break;
+		case Input.KEY_LSHIFT:
+			if (character.getStamina() >= 50) {
+				character.setSpeedX(0.9f);
+				character.setIsDash(true);
+			}
+			break;
+
+		case Input.KEY_S:
+			game.enterState(GOMenu.ID);
+			break;
+		}
+	}
+
+	public int getID() {
+		return ID;
+	}
 }

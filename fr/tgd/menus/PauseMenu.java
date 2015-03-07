@@ -8,19 +8,23 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import fr.tgd.main.WorldGenGame;
+
 //import fr.tgd.util.FontManager;
 
-public class PauseMenu extends BasicGameState{
+public class PauseMenu extends BasicGameState {
 	private String nom = "Pause";
 	private String[] items = { "Continuer", "Quitter" };
 
 	public int nbrOption = items.length;
-	
+
 	int ID = 4;
 
 	public String[] getItems() {
 		return this.items;
 	}
+
+	static StateBasedGame game;
 
 	static GameContainer container;
 	int selection = 0;
@@ -30,25 +34,29 @@ public class PauseMenu extends BasicGameState{
 	}
 
 	@Override
-	 public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.container = container;
-        container.setShowFPS(false);
+	public void init(GameContainer container, StateBasedGame game)
+			throws SlickException {
+		this.container = container;
+		container.setShowFPS(false);
+		this.game = game;
 	}
 
-	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-    	
+	public void update(GameContainer container, StateBasedGame game, int delta)
+			throws SlickException {
+
 	}
 
 	@Override
-	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+	public void render(GameContainer container, StateBasedGame game, Graphics g)
+			throws SlickException {
 
 		g.setColor(Color.blue);
-		//g.setFont(FontManager.menuTitre2TTF);
+		// g.setFont(FontManager.menuTitre2TTF);
 
 		g.drawString(this.nom, 200, 200);
 
 		g.setColor(Color.white);
-		//g.setFont(FontManager.menuItemsTTF);
+		// g.setFont(FontManager.menuItemsTTF);
 
 		for (int i = 0; i < nbrOption; i++) {
 			g.drawString(this.items[i], 300, 280 + 50 * i);
@@ -58,8 +66,7 @@ public class PauseMenu extends BasicGameState{
 
 	}
 
-
-	public void keyPressed(int key) {
+	public void keyPressed(int key, char c) {
 		switch (key) {
 		case Input.KEY_DOWN:
 			if (selection < nbrOption - 1)
@@ -73,15 +80,27 @@ public class PauseMenu extends BasicGameState{
 			else
 				selection = nbrOption - 1;
 			break;
-	/*  case Input.KEY_ENTER:
+		case Input.KEY_ENTER:
 			execOption();
 			break;
-		*/
+
 		}
 	}
-	
-	public int getID(){
+
+	public void execOption() {
+
+		switch (selection) {
+		case 0:
+			game.enterState(WorldGenGame.ID);
+			break;
+		case 1:
+			game.enterState(MainMenu.ID);
+
+		}
+	}
+
+	public int getID() {
 		return ID;
 	}
-	
+
 }

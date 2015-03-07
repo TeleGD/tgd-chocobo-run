@@ -19,7 +19,7 @@ import fr.tgd.world.World;
 
 public class MainMenu extends BasicGameState{
 	
-	public int ID = 2;
+	public static int ID = 2;
 
 	private String nom = "Menu Principal";
 	private String[] items = { "Jouer", "Quitter", "Scores" };
@@ -82,6 +82,7 @@ public class MainMenu extends BasicGameState{
 		}
 	}
 	
+	 
 	public void execOption() {
 		switch (selection) {
 		case 0:
@@ -89,7 +90,9 @@ public class MainMenu extends BasicGameState{
 			break;
 		case 1:
 			container.exit();break;
-		case 2:break;
+		case 2:
+			game.enterState(GOMenu.ID);
+			break;
 			
 		}
 	}

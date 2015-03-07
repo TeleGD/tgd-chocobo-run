@@ -19,10 +19,6 @@ public abstract class Bonus extends Circle {
 	
 	public void update(int delta){
 		setY(getY()+Character.wallSpeed*delta);
-		if(timer.getTime()>5000 && !Collisions.collisionCircleAnyRect(WorldGenGame.character)){
-			WorldGenGame.character.setInvicible(false);
-			timer.stop();
-		}
 	}
 	
 	public void render(Graphics g){

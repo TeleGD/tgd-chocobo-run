@@ -17,7 +17,20 @@ public class Character extends Circle  {
 	private boolean dead=false;
 	protected double c;
 	private boolean invicible=false;
+	private int mult=1;
 	
+	public double getWallSpeed() {
+		return wallSpeed;
+	}
+	public void setWallSpeed(double wallSpeed) {
+		Character.wallSpeed = wallSpeed;
+	}
+	public int getMult() {
+		return mult;
+	}
+	public void setMult(int mult) {
+		this.mult = mult;
+	}
 	public boolean getIsDash() {
 		return isDash;
 	}
@@ -106,7 +119,7 @@ public class Character extends Circle  {
 		dead = true;
 	}
 	
-	public void score(int delta, int mult){
+	public void score(int delta){
 		c+=wallSpeed*delta*mult;
 	}
 	
@@ -127,7 +140,7 @@ public class Character extends Circle  {
 	movement(delta);
 	recoverStamina();
 	consumeStamina();
-	score(delta,1);
+	score(delta);
 	}
 
 	public void render(Graphics g) {

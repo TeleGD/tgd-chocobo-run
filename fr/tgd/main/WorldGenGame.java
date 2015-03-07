@@ -79,6 +79,12 @@ public class WorldGenGame extends BasicGameState {
 		world.update(delta);
 		character.update(delta);
 		gen.update(delta);
+		
+		if(character.isDead()){
+			game.enterState(GOMenu.ID);
+			character.setDead(false);
+			world.removeAllWalls();
+		}
 
 	}
 

@@ -16,6 +16,10 @@ public class World {
 	public void removeWall(Wall wall) {
 		walls.remove(wall);
 	}
+	
+	public void removeAllWalls(){
+		walls.removeAll(walls);
+	}
 
 	public double getW() {
 		return w;

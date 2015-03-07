@@ -14,6 +14,7 @@ public class Character extends Circle  {
 	protected int speedDash;
 	public static double wallSpeed = 0.1;
 	private World world;
+	private boolean dead=false;
 	protected int c;
 	
 	public boolean getIsDash() {
@@ -56,6 +57,9 @@ public class Character extends Circle  {
 	}
 	
 	public void movement(int delta) {
+		if(Collisions.collisionCircleAnyRect(this)){
+			die();
+		}
 		if(isMoving){
 			switch(movement) {
 			case 0 :
@@ -89,9 +93,22 @@ public class Character extends Circle  {
 		return stamina;
 	}
 	
+	public void die(){
+		c=0;
+		wallSpeed = 0.1;
+		dead = true;
+	}
+	
 	public int score(){
 		c+=1;
 		return c;
+	}
+	
+	public boolean isDead(){
+		return dead;
+	}
+	public void setDead(Boolean dead){
+		this.dead = dead;
 	}
 	
 	public void update(int delta) {

@@ -25,13 +25,21 @@ public class BonusGenerator {
 			time++;
 			if (time>nextInterval/(Character.wallSpeed)*10){
 				int posX=rand.nextInt((int)world.getW());
-				Bonus bonus = new Shield(posX,0,5);
-				World.bonuses.add(bonus);
+				Bonus bonus=null;
+				switch(rand.nextInt(2)){
+				case 0:
+					bonus = new Shield(posX,0,5);
+					World.bonuses.add(bonus);
+					break;
+				case 1:
+					bonus = new DoubleScoreBonus(posX,0,5);
+					World.bonuses.add(bonus);
+					break;
+				}
 				if(Collisions.collisionCircleAnyRect(bonus))
 					World.bonuses.remove(bonus);
 				time=0;
 			}
 			nextInterval= rand.nextInt(maxInterval-minInterval)+minInterval ; 
 	}
-
 }

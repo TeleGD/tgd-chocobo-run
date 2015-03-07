@@ -1,5 +1,7 @@
 package fr.tgd.world;
 
+import org.newdawn.slick.Graphics;
+
 import fr.tgd.main.WorldGenGame;
 import fr.tgd.util.Collisions;
 
@@ -15,6 +17,10 @@ public class AccelerationBonus extends Bonus{
 			WorldGenGame.character.setInvincible(false);
 			timer.stop();
 		}
+	}
+	
+	public void render(Graphics g){
+		
 	}
 	
 	public void used(){

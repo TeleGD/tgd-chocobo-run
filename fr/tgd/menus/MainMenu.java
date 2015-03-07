@@ -87,10 +87,11 @@ public class MainMenu extends BasicGameState{
 		case 0:
 			game.enterState(WorldGenGame.ID);
 			break;
-			
 		case 1:
 			container.exit();break;
-		case 2:break;
+		case 2:
+			game.enterState(GOMenu.ID);
+			break;
 			
 		}
 	}

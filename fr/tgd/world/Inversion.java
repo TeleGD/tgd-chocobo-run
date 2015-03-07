@@ -22,6 +22,7 @@ public class Inversion extends Bonus{
 	}
 	
 	public void used(){
+		WorldGenGame.character.inv=true;
 		WorldGenGame.character.setColor(Color.cyan);
 		WorldGenGame.character.setSpeedX(-0.3f);
 		WorldGenGame.character.getTimerInv().start();

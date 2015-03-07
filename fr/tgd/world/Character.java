@@ -21,6 +21,7 @@ public class Character extends Circle  {
 	private boolean invincible=false;
 	private int mult=1;
 	private Color color=Color.black;
+	public boolean inv = false;
 
 	private Timer timerShield=new Timer();
 	private Timer timerDouble=new Timer();
@@ -97,13 +98,13 @@ public class Character extends Circle  {
 				switch(movement) {
 				case 0 :
 					x-=speedX*delta;
-					if ((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x<=radius){
+					if ((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x<=radius ||  this.x>=world.getW()-radius){
 						x+=speedX*delta;
 					}
 					break;
 				case 1 : 
 					x+=speedX*delta;
-					if((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x>=world.getW()-radius){
+					if((Collisions.collisionCircleAnyRect(this)&&!invincible) || this.x>=world.getW()-radius || this.x<=radius){
 						x-=speedX*delta;}
 					break;
 				}
@@ -117,7 +118,10 @@ public class Character extends Circle  {
 			stamina-=20;
 		}else if(stamina <=0) {
 		setIsDash(false);
-		setSpeedX(0.3f);
+		if(inv)
+		setSpeedX(-0.3f);
+		else
+		speedX=0.3f;
 		}
 	}
 
@@ -180,6 +184,7 @@ public class Character extends Circle  {
 		if(timerInv.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
 			color=Color.black;
 			speedX=0.3f;
+			inv = false;
 			timerInv.stop();
 		}
 		recoverStamina();

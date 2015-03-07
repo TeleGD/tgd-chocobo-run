@@ -1,12 +1,16 @@
 package fr.tgd.menus;
 
 import java.awt.Font;
+import java.io.File;
+import java.io.FileWriter;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
+
+
 
 
 
@@ -32,6 +36,12 @@ public class Game extends StateBasedGame {
 		addState(new PauseMenu());
 		addState(new WorldGenGame());
 		addState(new HelpMenu());
+		addState(new ScoreMenu());
 
 	}
+	
+	
+
+	
+	
 }

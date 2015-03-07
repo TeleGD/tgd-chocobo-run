@@ -124,7 +124,6 @@ public class Character extends Circle  {
 	}
 	
 	public void die(){
-		c=0;
 		wallSpeed = 0.1;
 		dead = true;
 		color=Color.black;
@@ -137,6 +136,9 @@ public class Character extends Circle  {
 	
 	public double getScore(){
 		return c;
+	}
+	public void setScore(double score){
+		c=score;
 	}
 	
 	public boolean isDead(){

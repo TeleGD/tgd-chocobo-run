@@ -1,6 +1,7 @@
 package fr.tgd.menus;
 
 import java.awt.Font;
+import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -15,26 +16,23 @@ import fr.tgd.main.WorldGenGame;
 import fr.tgd.world.Character;
 import fr.tgd.world.World;
 
-public class HelpMenu extends BasicGameState {
-
-	public static int ID = 6;
-
-	private String nom = "Aide";
-	private String[] items = {
-			"Double Score : 2x plus de points pendant un temps limité !",
-			"Shield : profitez d'un bouclier et aucun mur ne vous arrête !",
-			"Accélération : Le défilement accélère soudainement !",
-			"Retour Menu" };
-
+public class ScoreMenu extends BasicGameState {
+	
+	public static int ID = 7;
+	
+	private String nom = "Meilleurs Scores";
+	
+	private String[] items = new String[6];
+	
 	public int nbrOption = items.length;
-
+	
 	public String[] getItems() {
 		return this.items;
 	}
 
 	static GameContainer container;
 	static StateBasedGame game;
-	int selection = nbrOption - 1;
+	int selection = 0;
 
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
@@ -56,11 +54,19 @@ public class HelpMenu extends BasicGameState {
 		g.drawString(this.nom, 200, 200);
 
 		g.setColor(Color.white);
+		
+		items[0] = "Retour Menu";
+		
+		for (int k = 1; k< nbrOption; k++) {
+			items[k] = WorldGenGame.scoreList[k-1].toString();
+		}
+		
+		nbrOption = this.items.length;
 
 		for (int i = 0; i < nbrOption; i++) {
-			g.drawString(this.items[i], 150, 280 + 50 * i);
+			g.drawString(this.items[i], 300, 230 + 50 * i);
 		}
-		g.drawString(">>", 80, 280 + 50 * selection);
+		g.drawString(">>", 230, 230 + 50 * selection);
 	}
 
 	@Override
@@ -72,20 +78,6 @@ public class HelpMenu extends BasicGameState {
 		}
 	}
 
-	public void execOption() {
-		switch (selection) {
-		case 0:
-			game.enterState(WorldGenGame.ID);
-			break;
-		case 1:
-			container.exit();
-			break;
-		case 2:
-			game.enterState(GOMenu.ID);
-			break;
-
-		}
-	}
 
 	public int getID() {
 		return ID;

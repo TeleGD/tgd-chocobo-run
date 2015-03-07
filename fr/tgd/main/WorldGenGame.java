@@ -1,5 +1,10 @@
 package fr.tgd.main;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
@@ -25,9 +30,12 @@ public class WorldGenGame extends BasicGameState {
 	private WallGenerator gen = new WallGenerator(world);
 	private BonusGenerator ben = new BonusGenerator(world);
 	public static Character character;
+	
 
 	private GameContainer container;
 	StateBasedGame game;
+	
+	public static Integer[] scoreList = new Integer[] {0, 0, 0, 0, 0};
 
 	// ======================================================================================
 	// DECLARATION DES CONSTANTES
@@ -48,7 +56,7 @@ public class WorldGenGame extends BasicGameState {
 	// ======================================================================================
 
 	public void init(GameContainer container, StateBasedGame game)
-			throws SlickException {
+			throws SlickException{
 		this.container = container;
 		container.setShowFPS(false);
 		character = new Character(world, 400d, 500d, 100, 0.3f, 10);
@@ -80,6 +88,21 @@ public class WorldGenGame extends BasicGameState {
 	// ======================================================================================
 
 	int time = 0;
+	
+	public void addScore(Integer score) {
+		Integer min = scoreList[0];
+		int imin = 0;
+		for (int i=1; i<5; i++) {
+			int k=scoreList[i];
+			if (k<min) {
+				min = k;
+				imin = i;
+			}
+		}
+		if (score >= min) {
+			scoreList[imin] = score;
+		}
+	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
@@ -89,6 +112,8 @@ public class WorldGenGame extends BasicGameState {
 		ben.update(delta,container);
 		
 		if (character.isDead()) {
+			addScore((int)character.getScore());
+			character.setScore(0);
 			game.enterState(GOMenu.ID);
 			character.setDead(false);
 			world.removeAllWalls();

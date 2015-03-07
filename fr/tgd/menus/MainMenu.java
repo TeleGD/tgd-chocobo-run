@@ -84,7 +84,7 @@ public class MainMenu extends BasicGameState{
 			game.enterState(WorldGenGame.ID);
 			break;
 		case 1:
-			game.enterState(GOMenu.ID);
+			game.enterState(ScoreMenu.ID);
 			break;
 		case 2:
 			game.enterState(HelpMenu.ID);

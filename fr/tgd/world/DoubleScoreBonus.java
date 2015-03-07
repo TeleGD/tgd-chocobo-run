@@ -17,13 +17,13 @@ public class DoubleScoreBonus extends Bonus {
 	}
 	
 	public void render(Graphics g){
-		g.setColor(Color.pink);
+		g.setColor(Color.red);
 		g.fillOval((float) x-radius, (float) y-radius, 10, 10);
 	}
 	
 	public void used(){
 		WorldGenGame.character.setMult(2);
-		WorldGenGame.character.setColor(Color.pink);
+		WorldGenGame.character.setColor(Color.red);
 		WorldGenGame.character.getTimerDouble().start();
 	}
 

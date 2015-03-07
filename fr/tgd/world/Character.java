@@ -24,6 +24,7 @@ public class Character extends Circle  {
 	
 	private Timer timerShield=new Timer();
 	private Timer timerDouble=new Timer();
+	private Timer timerAccel=new Timer();
 	
 	public double getWallSpeed() {
 		return wallSpeed;
@@ -162,6 +163,11 @@ public class Character extends Circle  {
 		mult=1;
 		timerDouble.stop();
 	}
+	if(timerAccel.getTime()>5000 && !Collisions.collisionCircleAnyRect(this)){
+		color=Color.black;
+		wallSpeed-=0.2f;
+		timerAccel.stop();
+	}
 	recoverStamina();
 	consumeStamina();
 	score(delta);
@@ -183,6 +189,9 @@ public class Character extends Circle  {
 	}
 	public Timer getTimerDouble() {
 		return timerDouble;
+	}
+	public Timer getTimerAccel() {
+		return timerAccel;
 	}
 	
 	

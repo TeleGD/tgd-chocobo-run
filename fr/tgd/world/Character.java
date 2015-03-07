@@ -175,7 +175,7 @@ public class Character extends Circle  {
 
 	public void render(Graphics g) {
 		g.setColor(color);
-		g.drawOval((float) x-radius, (float) y-radius, 20, 20);
+		g.fillOval((float) x-radius, (float) y-radius, 20, 20);
 		g.setColor(Color.black);
 		g.fillRect(-150, 25, stamina/100, 25);
 		g.drawString(""+(int)getScore(),-150,50);

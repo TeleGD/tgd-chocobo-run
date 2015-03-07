@@ -55,15 +55,31 @@ public class Character extends Circle  {
 		}
 	}
 	
-		
+	public int recoverStamina(){
+		if(stamina<10000){//12s pour devenir full
+			stamina++;
+		}
+		return stamina;
+	}
 	
+	public int score(){
+		int c=0;
+		c=(int)(c+getY());
+		return c;
+	}
 	
 	public void update(int delta) {
-	movement(delta);	
+	movement(delta);
+	score();
+	recoverStamina();
+	System.out.println(stamina);
+	
 	}
 
 	public void render(Graphics g) {
 		g.drawOval((float) x, (float) y, 10, 10);
+		g.fillRect(10, 25, stamina/100, 25);
+		g.drawString(""+score(),10, 50);
 	}
 	
 	

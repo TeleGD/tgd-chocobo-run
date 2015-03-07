@@ -1,3 +1,5 @@
+package fr.tgd.main;
+
 import java.util.Random;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;

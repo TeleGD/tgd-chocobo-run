@@ -1,8 +1,5 @@
 package fr.tgd.main;
 import java.util.Random;
-
-import fr.tgd.world.Character;
-
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -10,11 +7,10 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
-public class CharacterGame extends BasicGame{	//Classe principale WindowGame
-
+public class Game extends BasicGame{	//Classe principale WindowGame
 	
     public static void main(String[] args) throws SlickException {
-        new AppGameContainer(new CharacterGame(), largeurW, hauteurW, false).start(); 
+        new AppGameContainer(new Game(), largeurW, hauteurW, false).start(); 
     }
 	
 	GameContainer container;
@@ -24,7 +20,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 	//======================================================================================
 	
 	static public int hauteurW=600,largeurW=800; 
-	static public Character character;
+
 	//======================================================================================
 	//DECLARATION DES VARIABLES
 	//======================================================================================
@@ -33,7 +29,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
 	//CREATEUR
 	//======================================================================================
 	
-    public CharacterGame() {
+    public Game() {
         super("Nuit Coding");
     }
     
@@ -44,7 +40,6 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     public void init(GameContainer container) throws SlickException {
         this.container = container;
         container.setShowFPS(false);
-        character = new Character(100d,100d,0,0.3f,20);
     }
     
     //======================================================================================
@@ -52,7 +47,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-    	character.render(g);
+
     }
 
     //======================================================================================
@@ -60,7 +55,7 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
     //======================================================================================
 
     public void update(GameContainer container, int delta) throws SlickException {
-    	character.update(delta);
+    	
     	
     }
     //======================================================================================
@@ -71,25 +66,19 @@ public class CharacterGame extends BasicGame{	//Classe principale WindowGame
         if (Input.KEY_ESCAPE == key) {
             container.exit();
         }
-        switch (key) {
-        case Input.KEY_LEFT: character.setMoving(false);
-        					 break;
-        case Input.KEY_RIGHT: character.setMoving(false);
-        					  break;
-        case Input.KEY_Z:break;
-        case Input.KEY_S:break;
-    }
+        if (Input.KEY_UP == key || Input.KEY_DOWN == key) {
+
+        }
+        if (Input.KEY_Z == key || Input.KEY_S == key) {
+
+        }
     }
     
 
     public void keyPressed(int key, char c) {
         switch (key) {
-            case Input.KEY_LEFT: character.setMoving(true);
-            					 character.setMovement(0);
-            					 break;
-            case Input.KEY_RIGHT: character.setMoving(true);
-			 					  character.setMovement(1);
-            					  break;
+            case Input.KEY_UP:;break;
+            case Input.KEY_DOWN:break;
             case Input.KEY_Z:break;
             case Input.KEY_S:break;
         }

@@ -17,15 +17,15 @@ import fr.tgd.world.Character;
 import fr.tgd.world.World;
 
 public class ScoreMenu extends BasicGameState {
-	
+
 	public static int ID = 7;
-	
+
 	private String nom = "Meilleurs Scores";
-	
+
 	private String[] items = new String[6];
-	
+
 	public int nbrOption = items.length;
-	
+
 	public String[] getItems() {
 		return this.items;
 	}
@@ -54,13 +54,13 @@ public class ScoreMenu extends BasicGameState {
 		g.drawString(this.nom, 200, 200);
 
 		g.setColor(Color.white);
-		
+
 		items[0] = "Retour Menu";
-		
+
 		for (int k = 1; k< nbrOption; k++) {
 			items[k] = WorldGenGame.scoreList[k-1].toString();
 		}
-		
+
 		nbrOption = this.items.length;
 
 		for (int i = 0; i < nbrOption; i++) {

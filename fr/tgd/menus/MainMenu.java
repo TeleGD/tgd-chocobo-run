@@ -17,7 +17,7 @@ import fr.tgd.world.Character;
 import fr.tgd.world.World;
 
 public class MainMenu extends BasicGameState{
-	
+
 	public static int ID = 2;
 
 	private String nom = "Menu Principal";
@@ -40,11 +40,11 @@ public class MainMenu extends BasicGameState{
 	 }
 
 	 public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-	    	
+
 	 }
 
 	 public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-			
+
 		 	g.setColor(Color.red);
 
 			g.drawString(this.nom,200, 200);
@@ -77,7 +77,7 @@ public class MainMenu extends BasicGameState{
 			break;
 		}
 	}
-	
+
 	public void execOption() {
 		switch (selection) {
 		case 0:
@@ -94,7 +94,7 @@ public class MainMenu extends BasicGameState{
 			break;
 		}
 	}
-	
+
 	public int getID(){
 		return ID;
 	}

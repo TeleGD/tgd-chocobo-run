@@ -19,7 +19,7 @@ public class World {
 	public void removeWall(Wall wall) {
 		walls.remove(wall);
 	}
-	
+
 	public void removeAllWalls(){
 		walls.removeAll(walls);
 	}
@@ -49,7 +49,7 @@ public class World {
 	public static ArrayList<Wall> getWalls() {
 		return walls;
 	}
-	
+
 	public static ArrayList<Bonus> getBonuses() {
 		return bonuses;
 	}
@@ -61,7 +61,7 @@ public class World {
 		}
 		return null;
 	}
-	
+
 	public Bonus getCollidingBonus(Circle c) {
 		for (Bonus bonus : bonuses) {
 			if(Collisions.collisionCircleCircle(c,bonus))

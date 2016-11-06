@@ -17,10 +17,14 @@ import org.newdawn.slick.state.StateBasedGame;
 import fr.tgd.main.WorldGenGame;
 
 public class Game extends StateBasedGame {
-	
+
 
 	public static void main(String[] args) throws SlickException {
-		new AppGameContainer(new Game(), 800, 600, false).start();
+		AppGameContainer app = new AppGameContainer(new Game(), 800, 600, false);
+		app.setTargetFrameRate(60);
+		app.setVSync(true);
+		app.setShowFPS(true);
+		app.start();
 	}
 
 	public Game() {
@@ -39,9 +43,9 @@ public class Game extends StateBasedGame {
 		addState(new ScoreMenu());
 
 	}
-	
-	
 
-	
-	
+
+
+
+
 }

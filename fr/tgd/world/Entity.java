@@ -4,7 +4,7 @@ import org.newdawn.slick.Graphics;
 
 public abstract class Entity {
 	protected double x, y;
-	
+
 	public Entity(double x, double y) {
 		super();
 		this.x = x;
@@ -28,5 +28,5 @@ public abstract class Entity {
 	}
 	public abstract void update(int delta);
 	public abstract void render(Graphics g);
-		
+
 }

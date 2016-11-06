@@ -15,7 +15,7 @@ import fr.tgd.world.Character;
 
 
 public class GOMenu extends BasicGameState {
-	
+
 	public static int ID = 3;
 
 	private String nom = "GAME OVER";

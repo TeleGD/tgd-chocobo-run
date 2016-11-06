@@ -22,10 +22,10 @@ public class HelpMenu extends BasicGameState {
 
 	private String nom = "Aide";
 	private String[] items = {
-			"Double Score : 2x plus de points pendant un temps limité !",
+			"Double Score : 2x plus de points pendant un temps limitï¿½ !",
 			"Ghost : Vous pouvez traverser les murs !",
-			"Accélération : Le défilement accélère soudainement !",
-			"Inversion : Les contrôles sont maintenant à l'envers !",
+			"Accï¿½lï¿½ration : Le dï¿½filement accï¿½lï¿½re soudainement !",
+			"Inversion : Les contrï¿½les sont maintenant ï¿½ l'envers !",
 			"Retour Menu" };
 
 	public int nbrOption = items.length;
@@ -63,7 +63,7 @@ public class HelpMenu extends BasicGameState {
 			g.drawString(this.items[i], 150, 280 + 50 * i);
 		}
 		g.drawString(">>", 80, 280 + 50 * selection);
-		
+
 
 		g.setColor(Color.red);
 		g.fillOval(120, 285, 10, 10);
@@ -73,8 +73,8 @@ public class HelpMenu extends BasicGameState {
 		g.fillOval(120, 385, 10, 10);
 		g.setColor(Color.cyan);
 		g.fillOval(120, 435, 10, 10);
-		
-		
+
+
 	}
 
 	@Override

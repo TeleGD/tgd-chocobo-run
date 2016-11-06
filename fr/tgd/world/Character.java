@@ -130,9 +130,9 @@ public class Character extends Circle {
 		}
 	}
 
-	public void consumeStamina() {
+	public void consumeStamina(int delta) {
 		if (isDash && stamina > 0) {
-			stamina -= 20;
+			stamina -= 10 * delta;
 		} else if (stamina <= 0) {
 			setIsDash(false);
 			if(inv)
@@ -142,7 +142,7 @@ public class Character extends Circle {
 
 
 			if (isDash && stamina>0){
-				stamina-=20;
+				stamina -= 10 * delta;
 			}else if(stamina <=0) {
 				setIsDash(false);
 				if(inv)
@@ -153,9 +153,9 @@ public class Character extends Circle {
 		}
 	}
 
-	public int recoverStamina() {
+	public int recoverStamina(int delta) {
 		if (stamina < 10000) {// 12s pour devenir full
-			stamina++;
+			stamina += delta;
 		}
 		return stamina;
 	}
@@ -218,8 +218,8 @@ public class Character extends Circle {
 			inv = false;
 			timerInv.stop();
 		}
-		recoverStamina();
-		consumeStamina();
+		recoverStamina(delta);
+		consumeStamina(delta);
 		score(delta);
 
 	}

@@ -111,7 +111,7 @@ public class WorldGenGame extends BasicGameState {
 		ben.update(delta, container);
 
 		if (character.isDead()) {
-			
+
 			int dernierScore = (int) Character.getScore();
 			game.enterState(GOMenu.ID);
 			addScore(dernierScore);

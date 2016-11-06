@@ -6,11 +6,11 @@ public class Timer {
 	long tmp;
 	boolean isStop = true;
 	boolean isPaused;
-	
+
 	public Timer(){
-		
+
 	}
-	
+
 	public void start(){
 		isStop = false;
 		start = System.currentTimeMillis();
@@ -29,14 +29,14 @@ public class Timer {
 		start = System.currentTimeMillis()-tmp;
 		isPaused = false;
 	}
-	
+
 	public long getTime(){
 		if(!isStop && !isPaused)
 			return System.currentTimeMillis()-start;
 		else if(isPaused)
 			return tmp;
-		else 
-			return 0; 
-	}	
-	
+		else
+			return 0;
+	}
+
 }

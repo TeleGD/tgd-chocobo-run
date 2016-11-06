@@ -16,14 +16,14 @@ public class BonusGenerator {
 	private static int minInterval=200;
 	private static int maxInterval=450;
 	public Random rand = new Random();
-	
+
 	public BonusGenerator(World world) {
 		this.world = world;
 	}
-	
+
 	public void update(int delta,GameContainer container) {
-			time++;
-			if (time>nextInterval/(Character.wallSpeed)*10){
+			time += delta;
+			if (time > 1500 / Character.wallSpeed) {
 				int posX=rand.nextInt((int)world.getW());
 				Bonus bonus=null;
 				switch(rand.nextInt(4)){
@@ -44,11 +44,11 @@ public class BonusGenerator {
 					World.bonuses.add(bonus);
 					break;
 				}
-				
+
 				if(Collisions.collisionCircleAnyRect(bonus))
 					World.bonuses.remove(bonus);
 				time=0;
 			}
-			nextInterval= rand.nextInt(maxInterval-minInterval)+minInterval ; 
+			nextInterval= rand.nextInt(maxInterval-minInterval)+minInterval ;
 	}
 }

@@ -11,22 +11,22 @@ public class WallGenerator {
 	private static int minInterval=200;
 	private static int maxInterval=450;
 	public Random rand = new Random();
-	public static int nbWall ; 
+	public static int nbWall ;
 
 	private double coef=0.0015;
 
-	private static int holeSize = 50 ; 
+	private static int holeSize = 50 ;
 
-	
+
 	public WallGenerator(World world) {
 		this.world= world;
 	}
-	
+
 	public void update(int delta) {
-		time++ ;
-		if(time > nextInterval/(Character.wallSpeed)/2) {
+		time += delta;
+		if (time > 200 / Character.wallSpeed) {
 			ArrayList<Double> wallPos = calcWallPos();
-			
+
 			for(int i=0; i<(wallPos.size())/2+1; i++)
 			{
 				double xLeft = 0, xRight = world.getW();
@@ -36,11 +36,11 @@ public class WallGenerator {
 					xRight = wallPos.get(2*i);
 				Wall wall = new Wall(xLeft, 0, xRight-xLeft, 20);
 				world.addWall(wall);
-				Character.wallSpeed+=delta*coef ;
+				Character.wallSpeed += coef;
 				nbWall++;
 			}
 			time=0;
-			nextInterval= rand.nextInt(maxInterval-minInterval)+minInterval ; 
+			nextInterval= rand.nextInt(maxInterval-minInterval)+minInterval ;
 		}
 	}
 
@@ -71,7 +71,7 @@ public class WallGenerator {
 					{
 						double xC = (xLi+xRj)/2;
 						double dim = (xRj-xLi)/2;
-						
+
 						dims.remove(j);
 						dims.remove(i);
 						dims.add(new WallDim(xC, dim));
@@ -89,28 +89,28 @@ public class WallGenerator {
 		Collections.sort(pos);
 		return pos;
 	}
-	
-	private class WallDim 
+
+	private class WallDim
 	{
 		public double center, dim;
-		
+
 		public WallDim(double center, double dim)
 		{
 			this.center = center;
 			this.dim = dim;
 		}
-		
+
 		public double getXLeft()
 		{
 			return center - dim;
 		}
-		
+
 		public double getXRight()
 		{
 			return center + dim;
 		}
 	}
-	
+
 	private class WallDimComparator implements Comparator
 	{
 
@@ -118,6 +118,6 @@ public class WallGenerator {
 		public int compare(Object o1, Object o2) {
 			return (int) (((WallDim)o1).center-((WallDim)o2).center);
 		}
-		
+
 	}
 }

@@ -5,12 +5,12 @@ import org.newdawn.slick.Graphics;
 
 
 public class Wall extends Rectangle {
-	
+
 
 	public Wall(double x, double y, double w , double h) {
 		super(x, y,w,h);
 	}
-	
+
 	public void update(int delta) {
 		setY(getY()+Character.wallSpeed*delta);
 	}
@@ -19,8 +19,6 @@ public class Wall extends Rectangle {
 		g.setColor(Color.black);
 		g.fillRect((int)getX(), (int)getY(), (int)getWidth(), (int)getHight());
 	}
-	
-	
+
+
 }
-
-

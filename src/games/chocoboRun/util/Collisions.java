@@ -1,8 +1,8 @@
-package games.firstCodingNightEver.util;
+package games.chocoboRun.util;
 
-import games.firstCodingNightEver.world.Circle;
-import games.firstCodingNightEver.world.Rectangle;
-import games.firstCodingNightEver.world.Map;
+import games.chocoboRun.world.Circle;
+import games.chocoboRun.world.Rectangle;
+import games.chocoboRun.world.Map;
 
 public class Collisions {
 	public static double distanceCircleRect(Circle circle, Rectangle rectangle){

@@ -1,4 +1,4 @@
-package games.firstCodingNightEver.menus;
+package games.chocoboRun.menus;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;

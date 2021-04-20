@@ -14,7 +14,7 @@ import app.AppLoader;
 public final class Main {
 
 	public static final void main(String[] arguments) throws SlickException {
-		String title = "First Coding Night Ever";
+		String title = "Chocobo Run";
 		int width = 800;
 		int height = 600;
 		boolean fullscreen = false;
@@ -49,12 +49,12 @@ public final class Main {
 
 			@Override
 			public void initStatesList(GameContainer container) {
-				addState(new games.firstCodingNightEver.menus.MainMenu(2));
-				addState(new games.firstCodingNightEver.menus.GOMenu(3));
-				// addState(new games.firstCodingNightEver.menus.PauseMenu(4));
-				addState(new games.firstCodingNightEver.menus.HelpMenu(6));
-				addState(new games.firstCodingNightEver.menus.ScoreMenu(1));
-				addState(new games.firstCodingNightEver.World(0));
+				addState(new games.chocoboRun.menus.MainMenu(2));
+				addState(new games.chocoboRun.menus.GOMenu(3));
+				// addState(new games.chocoboRun.menus.PauseMenu(4));
+				addState(new games.chocoboRun.menus.HelpMenu(6));
+				addState(new games.chocoboRun.menus.ScoreMenu(1));
+				addState(new games.chocoboRun.World(0));
 			}
 
 		};

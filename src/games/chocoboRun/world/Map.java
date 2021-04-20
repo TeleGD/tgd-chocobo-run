@@ -1,11 +1,11 @@
-package games.firstCodingNightEver.world;
+package games.chocoboRun.world;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.newdawn.slick.Graphics;
 
-import games.firstCodingNightEver.util.Collisions;
+import games.chocoboRun.util.Collisions;
 
 public class Map {
 

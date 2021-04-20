@@ -1,4 +1,4 @@
-package games.firstCodingNightEver.util;
+package games.chocoboRun.util;
 
 public class Timer {
 

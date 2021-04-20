@@ -1,11 +1,11 @@
-package games.firstCodingNightEver.world;
+package games.chocoboRun.world;
 
 import java.util.Random;
 
 import org.newdawn.slick.GameContainer;
 
-import games.firstCodingNightEver.World;
-import games.firstCodingNightEver.util.Collisions;
+import games.chocoboRun.World;
+import games.chocoboRun.util.Collisions;
 
 
 public class BonusGenerator {

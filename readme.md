@@ -1,4 +1,4 @@
-# *First Coding Night Ever*
+# *Chocobo Run*
 
 *Coding Night* du 06/03/2015
 

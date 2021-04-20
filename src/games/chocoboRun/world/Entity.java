@@ -1,8 +1,8 @@
-package games.firstCodingNightEver.world;
+package games.chocoboRun.world;
 
 import org.newdawn.slick.Graphics;
 
-import games.firstCodingNightEver.World;
+import games.chocoboRun.World;
 
 public abstract class Entity {
 

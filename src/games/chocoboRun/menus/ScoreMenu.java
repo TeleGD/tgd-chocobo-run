@@ -1,4 +1,4 @@
-package games.firstCodingNightEver.menus;
+package games.chocoboRun.menus;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -7,7 +7,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import games.firstCodingNightEver.World;
+import games.chocoboRun.World;
 
 public class ScoreMenu extends BasicGameState {
 

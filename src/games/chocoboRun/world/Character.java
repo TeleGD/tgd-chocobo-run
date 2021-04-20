@@ -1,11 +1,11 @@
-package games.firstCodingNightEver.world;
+package games.chocoboRun.world;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
-import games.firstCodingNightEver.World;
-import games.firstCodingNightEver.util.Collisions;
-import games.firstCodingNightEver.util.Timer;
+import games.chocoboRun.World;
+import games.chocoboRun.util.Collisions;
+import games.chocoboRun.util.Timer;
 
 public class Character extends Circle {
 

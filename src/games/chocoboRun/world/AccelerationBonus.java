@@ -1,10 +1,10 @@
-package games.firstCodingNightEver.world;
+package games.chocoboRun.world;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
-import games.firstCodingNightEver.World;
-import games.firstCodingNightEver.util.Collisions;
+import games.chocoboRun.World;
+import games.chocoboRun.util.Collisions;
 
 public class AccelerationBonus extends Bonus{
 

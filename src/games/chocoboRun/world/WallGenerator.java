@@ -1,11 +1,11 @@
-package games.firstCodingNightEver.world;
+package games.chocoboRun.world;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
-import games.firstCodingNightEver.World;
+import games.chocoboRun.World;
 
 public class WallGenerator {
 

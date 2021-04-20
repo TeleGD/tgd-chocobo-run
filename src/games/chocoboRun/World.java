@@ -1,4 +1,4 @@
-package games.firstCodingNightEver;
+package games.chocoboRun;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -7,10 +7,10 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import games.firstCodingNightEver.world.BonusGenerator;
-import games.firstCodingNightEver.world.Character;
-import games.firstCodingNightEver.world.WallGenerator;
-import games.firstCodingNightEver.world.Map;
+import games.chocoboRun.world.BonusGenerator;
+import games.chocoboRun.world.Character;
+import games.chocoboRun.world.WallGenerator;
+import games.chocoboRun.world.Map;
 
 public class World extends BasicGameState {
 
